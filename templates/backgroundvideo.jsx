@@ -23,7 +23,7 @@ export default function BackgroundVideo(props) {
     }
 
     return (
-      <>
+      <div className="backgroundvideo__container">
         <video {...videoProps}>
           <source
             src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
@@ -36,7 +36,7 @@ export default function BackgroundVideo(props) {
             <span className="backgroundvideo__pause-icon">❚❚</span>
           </button>
         )}
-      </>
+      </div>
     );
   }
 
