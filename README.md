@@ -67,7 +67,7 @@ The background video can be configured to show or hide at different screen sizes
 **adapt-backgroundVideo** only works on desktop.
 
 ----------------------------
-**Version number:**  1.5.0  
+**Version number:**  1.5.1  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
