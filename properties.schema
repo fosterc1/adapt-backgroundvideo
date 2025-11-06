@@ -172,41 +172,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_size": {
-									"type": "string",
-									"required": false,
-									"default": "cover",
-									"title": "Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the size of the background video",
-									"enum": [
-										"auto",
-										"cover",
-										"contain",
-										"100% 100%"
-									]
-								},
-								"_position": {
-									"type": "string",
-									"required": false,
-									"default": "center center",
-									"title": "Position",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the position of the background video",
-									"enum": [
-										"left top",
-										"left center",
-										"left bottom",
-										"center top",
-										"center center",
-										"center bottom",
-										"right top",
-										"right center",
-										"right bottom"
-									]
 								}
 							}
 						}
@@ -372,41 +337,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_size": {
-									"type": "string",
-									"required": false,
-									"default": "cover",
-									"title": "Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the size of the background video",
-									"enum": [
-										"auto",
-										"cover",
-										"contain",
-										"100% 100%"
-									]
-								},
-								"_position": {
-									"type": "string",
-									"required": false,
-									"default": "center center",
-									"title": "Position",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the position of the background video",
-									"enum": [
-										"left top",
-										"left center",
-										"left bottom",
-										"center top",
-										"center center",
-										"center bottom",
-										"right top",
-										"right center",
-										"right bottom"
-									]
 								}
 							}
 						}
@@ -572,41 +502,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_size": {
-									"type": "string",
-									"required": false,
-									"default": "cover",
-									"title": "Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the size of the background video",
-									"enum": [
-										"auto",
-										"cover",
-										"contain",
-										"100% 100%"
-									]
-								},
-								"_position": {
-									"type": "string",
-									"required": false,
-									"default": "center center",
-									"title": "Position",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the position of the background video",
-									"enum": [
-										"left top",
-										"left center",
-										"left bottom",
-										"center top",
-										"center center",
-										"center bottom",
-										"right top",
-										"right center",
-										"right bottom"
-									]
 								}
 							}
 						}
@@ -772,41 +667,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_size": {
-									"type": "string",
-									"required": false,
-									"default": "cover",
-									"title": "Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the size of the background video",
-									"enum": [
-										"auto",
-										"cover",
-										"contain",
-										"100% 100%"
-									]
-								},
-								"_position": {
-									"type": "string",
-									"required": false,
-									"default": "center center",
-									"title": "Position",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Set the position of the background video",
-									"enum": [
-										"left top",
-										"left center",
-										"left bottom",
-										"center top",
-										"center center",
-										"center bottom",
-										"right top",
-										"right center",
-										"right bottom"
-									]
 								}
 							}
 						}

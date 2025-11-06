@@ -22,29 +22,6 @@ export default function BackgroundVideo(props) {
       videoProps.autoPlay = true;
     }
 
-    // Build inline styles for size and position (only if specified)
-    const videoStyle = {};
-    
-    // Set object-fit based on _size
-    if (_backgroundVideo._size) {
-      const size = _backgroundVideo._size;
-      if (size === '100% 100%') {
-        videoStyle.objectFit = 'fill';
-      } else {
-        videoStyle.objectFit = size; // auto, cover, or contain
-      }
-    }
-    
-    // Set object-position based on _position
-    if (_backgroundVideo._position) {
-      videoStyle.objectPosition = _backgroundVideo._position;
-    }
-    
-    // Only add style if we have any styles to add
-    if (Object.keys(videoStyle).length > 0) {
-      videoProps.style = videoStyle;
-    }
-
     return <video {...videoProps}>
       <source
         src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
@@ -55,27 +32,6 @@ export default function BackgroundVideo(props) {
 
   function UseGraphic() {
     if (_backgroundVideo._graphic) {
-      // Build inline styles for graphic to match video styling (only if specified)
-      const imgStyle = {};
-      
-      if (_backgroundVideo._size) {
-        const size = _backgroundVideo._size;
-        if (size === '100% 100%') {
-          imgStyle.objectFit = 'fill';
-        } else {
-          imgStyle.objectFit = size;
-        }
-      }
-      
-      if (_backgroundVideo._position) {
-        imgStyle.objectPosition = _backgroundVideo._position;
-      }
-      
-      // Only add style if we have any styles to add
-      if (Object.keys(imgStyle).length > 0) {
-        return <img src={_backgroundVideo._graphic} style={imgStyle}/>;
-      }
-      
       return <img src={_backgroundVideo._graphic}/>;
     }
     return null;
