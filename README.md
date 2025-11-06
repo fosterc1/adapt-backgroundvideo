@@ -61,7 +61,7 @@ The background video uses the following CSS defaults:
 **adapt-backgroundVideo** only works on desktop.
 
 ----------------------------
-**Version number:**  1.4.0  
+**Version number:**  1.4.1  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
