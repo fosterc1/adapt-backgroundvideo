@@ -147,7 +147,7 @@ When `_showControls` is enabled, a play/pause button is displayed. The default s
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.3.0  
+**Version number:**  2.4.0  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
