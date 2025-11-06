@@ -50,6 +50,12 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 >>**_onPauseRewind** (boolean): Rewind the video to the beginning when user manually pauses it. Default: `true`
 
+## Default Styling
+
+The background video uses the following CSS defaults:
+- **Size**: `auto` - Video displays at its original size
+- **Position**: `center center` - Video is centered both horizontally and vertically
+
 ## Limitations
  
 **adapt-backgroundVideo** only works on desktop.
