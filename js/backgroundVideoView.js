@@ -163,6 +163,8 @@ class BackgroundVideoView extends Backbone.View {
         this.video.addEventListener('ended', this.onVideoEnded.bind(this));
         this.videoEndedListenerAdded = true;
       }
+      // Update button state to reflect initial video state
+      this.update();
     }
   }
 
