@@ -21,6 +21,11 @@ export default function BackgroundVideo(props) {
     if (_backgroundVideo._autoPlay !== false) {
       videoProps.autoPlay = true;
     }
+    
+    // Add controls if _showControls is enabled
+    if (_backgroundVideo._showControls) {
+      videoProps.controls = true;
+    }
 
     return <video {...videoProps}>
       <source
