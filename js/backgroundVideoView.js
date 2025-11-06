@@ -150,6 +150,10 @@ class BackgroundVideoView extends Backbone.View {
     const props = { ...this.model.toJSON() };
     const Template = templates[this.constructor.template.replace('.jsx', '')];
     ReactDOM.render(<Template {...props} />, this.el);
+    
+    // Re-delegate events after React render to ensure buttons work
+    this.delegateEvents();
+    
     this.backgroundvideo = this.$el.find('video');
     if (this.backgroundvideo.length > 0) {
       this.backgroundvideo.on('onscreen', this.onScreenChange);
