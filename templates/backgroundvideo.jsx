@@ -37,8 +37,6 @@ export default function BackgroundVideo(props) {
     return null;
   }
 
-  if (_screenSize !== 'small') {
-    return <UseVideo />;
-  }
-  return <UseGraphic />;
+  // Always show video on all screen sizes
+  return <UseVideo />;
 }
