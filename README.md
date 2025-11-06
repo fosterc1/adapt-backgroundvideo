@@ -53,7 +53,7 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 ## Default Styling
 
 The background video uses the following CSS defaults:
-- **Size**: `auto` - Video displays at its original size
+- **Size**: `100% 100%` (object-fit: fill) - Video fills the entire container
 - **Position**: `center center` - Video is centered both horizontally and vertically
 
 ## Limitations
