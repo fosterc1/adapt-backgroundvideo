@@ -7,6 +7,7 @@
     "_graphic": "course/en/video/explore.jpg",
     "_selector": "",
     "_minHeight": "",
+    "_screenSize": "any",
     "_loops": -1,
     "_isMuted": true,
     "_autoPlay": true,
