@@ -53,14 +53,8 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 ## Default Styling
 
 The background video uses the following CSS defaults:
-- **Size**: `cover` - Video resizes to cover the entire container while maintaining aspect ratio
+- **Size**: `100% 100%` (object-fit: fill) - Video fills the entire container
 - **Position**: `center center` - Video is centered both horizontally and vertically
-
-## Breakpoint Support
-
-The background video can be configured to show or hide at different screen sizes using the **_screenSize** option. This allows you to have videos on larger screens and show a static image on smaller devices.
-
->>**_screenSize** (string): Control which screen sizes display the background video. Options: `any` (default - shows on all sizes), `xlarge`, `large`, `medium`, `small`. When set to a specific size, the video will only show on that breakpoint; other sizes will show the poster image (_graphic) if available.
 
 ## Limitations
  

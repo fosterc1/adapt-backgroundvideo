@@ -172,22 +172,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_screenSize": {
-									"type": "string",
-									"required": false,
-									"default": "any",
-									"title": "Screen Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Select which screen sizes should display the background video",
-									"enum": [
-										"any",
-										"xlarge",
-										"large",
-										"medium",
-										"small"
-									]
 								}
 							}
 						}
@@ -353,22 +337,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_screenSize": {
-									"type": "string",
-									"required": false,
-									"default": "any",
-									"title": "Screen Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Select which screen sizes should display the background video",
-									"enum": [
-										"any",
-										"xlarge",
-										"large",
-										"medium",
-										"small"
-									]
 								}
 							}
 						}
@@ -534,22 +502,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_screenSize": {
-									"type": "string",
-									"required": false,
-									"default": "any",
-									"title": "Screen Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Select which screen sizes should display the background video",
-									"enum": [
-										"any",
-										"xlarge",
-										"large",
-										"medium",
-										"small"
-									]
 								}
 							}
 						}
@@ -715,22 +667,6 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
-								},
-								"_screenSize": {
-									"type": "string",
-									"required": false,
-									"default": "any",
-									"title": "Screen Size",
-									"inputType": "Select",
-									"validators": [],
-									"help": "Select which screen sizes should display the background video",
-									"enum": [
-										"any",
-										"xlarge",
-										"large",
-										"medium",
-										"small"
-									]
 								}
 							}
 						}
