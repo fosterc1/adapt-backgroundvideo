@@ -11,6 +11,11 @@
         object-fit: fill;
         object-position: center center;
     }
+    // When controls are enabled, bring video forward so controls are clickable
+    video[controls] {
+        z-index: 1;
+        position: relative;
+    }
 }
 .has-backgroundvideo{
     position: relative;
