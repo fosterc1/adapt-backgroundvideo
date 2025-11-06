@@ -150,6 +150,6 @@ The background video extension works on all screen sizes including mobile device
 **Version number:**  2.4.0  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
-**Accessibility support:**    
-**RTL support:**  
-**Cross-platform coverage:** 
+**Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, and reduced motion support  
+**RTL support:** Yes  
+**Cross-platform coverage:** Desktop (Windows, macOS, Linux), Mobile (iOS, Android), Tablets - All modern browsers (Chrome, Firefox, Safari, Edge) 
