@@ -1,12 +1,12 @@
 # adapt-backgroundVideo  
 
-**BackgroundVideo** is an *extension* to add videos to the background of an element (menu, page, block).  
+**BackgroundVideo** is an *extension* to add videos to the background of an element (menu, page, article, block).  
 
 ## Settings Overview
 
 ### Attributes
 
-The following attributes, set within  *course.json*, *contentObjects.json* and *blocks.json*, configure the defaults for **Background Video**.  
+The following attributes, set within  *course.json*, *contentObjects.json*, *articles.json* and *blocks.json*, configure the defaults for **Background Video**.  
 
 >**_backgroundVideo** (object): The _backgroundVideo object that contains values for **_isEnabled**, **_mp4**, **_webm**, **_graphic**, **_selector** and  **_minHeight**.
 

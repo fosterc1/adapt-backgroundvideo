@@ -2,7 +2,7 @@
   "name": "adapt-backgroundVideo",
   "version": "1.0.0",
   "framework": ">=5.14.0",
-  "description": "An extension to add videos to the background of an element (menu, page, block)",
+  "description": "An extension to add videos to the background of an element (menu, page, article, block)",
   "repository": {
     "type": "git",
     "url": "https://github.com/fosterc1/adapt-backgroundvideo.git"

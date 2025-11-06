@@ -11,7 +11,7 @@ class BackgroundVideo extends Backbone.Controller {
 
   setupEventListeners() {
     this.listenTo(Adapt, {
-      'menuView:postRender pageView:postRender blockView:postRender': this.onPostRender
+      'menuView:postRender pageView:postRender articleView:postRender blockView:postRender': this.onPostRender
     });
 
   }

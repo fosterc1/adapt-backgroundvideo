@@ -1,4 +1,4 @@
-//course.json, contentObjects.json, blocks.json
+//course.json, contentObjects.json, articles.json, blocks.json
 {
   "_backgroundVideo": {
     "_isEnabled": true,
