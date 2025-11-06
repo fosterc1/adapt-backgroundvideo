@@ -6,6 +6,16 @@
     "_webm": "course/en/video/explore.webm",
     "_graphic": "course/en/video/explore.jpg",
     "_selector": "",
-    "_minHeight": ""
+    "_minHeight": "",
+    "_loops": -1,
+    "_isMuted": true,
+    "_autoPlay": true,
+    "_playsinline": true,
+    "_onScreenPercentInviewVertical": 1,
+    "_playFirstViewOnly": false,
+    "_offScreenPause": true,
+    "_offScreenRewind": false,
+    "_showControls": true,
+    "_onPauseRewind": true
   }
 }
