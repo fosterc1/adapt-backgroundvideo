@@ -12,29 +12,32 @@ class BackgroundVideoView extends Backbone.View {
   events() {
     return {
       'click .backgroundvideo__playpause': 'onPlayPauseClick',
+      'keydown .backgroundvideo__playpause': 'onPlayPauseKeydown',
       'click .backgroundvideo__sound': 'onSoundClick'
-
     };
   }
 
   initialize() {
-    _.bindAll(this, 'render', 'onScreenChange');
+    _.bindAll(this, 'render', 'onScreenChange', 'onVideoError', 'onVideoLoadedData');
     this.hasUserPaused = false;
     this.config = this.model.get('_backgroundVideo');
     this.isLoopsComplete = false;
+    this.videoListenersAdded = false;
+    this.checkReducedMotion();
     this.render(device.screenSize);
     this.setUpListeners();
   }
 
-  setUpListeners() {
-    if (this.video) {
-      this.video.addEventListener('ended', this.onVideoEnded.bind(this));
-      // Listen to video play/pause events to update button state
-      this.video.addEventListener('play', this.update.bind(this));
-      this.video.addEventListener('pause', this.update.bind(this));
-      this.video.addEventListener('playing', this.update.bind(this));
+  checkReducedMotion() {
+    // Respect user's reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion && this.config._autoPlay) {
+      this.config._autoPlay = false;
+      this.hasUserPaused = true;
     }
+  }
 
+  setUpListeners() {
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState !== 'visible') {
         this.onOffScreen();
@@ -44,8 +47,44 @@ class BackgroundVideoView extends Backbone.View {
     this.listenTo(Adapt, 'device:changed', this.render);
   }
 
-  onScreenChange(event, { onscreen, percentInview } = {}) {
+  setupVideoListeners() {
+    if (!this.video || this.videoListenersAdded) return;
+    
+    // Video playback events
+    this.video.addEventListener('ended', this.onVideoEnded.bind(this));
+    this.video.addEventListener('play', this.updateButtonState.bind(this));
+    this.video.addEventListener('pause', this.updateButtonState.bind(this));
+    this.video.addEventListener('playing', this.updateButtonState.bind(this));
+    
+    // Error handling
+    this.video.addEventListener('error', this.onVideoError.bind(this));
+    this.video.addEventListener('loadeddata', this.onVideoLoadedData.bind(this));
+    
+    this.videoListenersAdded = true;
+  }
 
+  onVideoError(event) {
+    const error = this.video?.error;
+    if (error) {
+      console.warn('BackgroundVideo: Error loading video', {
+        code: error.code,
+        message: error.message
+      });
+      this.$el.addClass('is-backgroundvideo-error');
+      
+      // Show poster/fallback image on error
+      if (this.config._graphic) {
+        this.$el.addClass('is-backgroundvideo-fallback');
+      }
+    }
+  }
+
+  onVideoLoadedData() {
+    this.$el.removeClass('is-backgroundvideo-error is-backgroundvideo-loading');
+    this.$el.addClass('is-backgroundvideo-ready');
+  }
+
+  onScreenChange(event, { onscreen, percentInview } = {}) {
     const isOffScreen = (!onscreen || percentInview < (this.config._onScreenPercentInviewVertical ?? 1));
     if (isOffScreen) return this.onOffScreen();
     this.onOnScreen();
@@ -95,18 +134,25 @@ class BackgroundVideoView extends Backbone.View {
       this.rewind();
       this.play();
     } else {
-
       this.isLoopsComplete = true;
-      this.update();
+      this.updateButtonState();
     }
   }
 
   play(noControls = false) {
     if (!this.video) return;
-    this.video.play();
-    this.update();
+    
+    const playPromise = this.video.play();
+    
+    // Handle play promise for better error handling
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        console.warn('BackgroundVideo: Play was prevented', error.name);
+      });
+    }
+    
+    this.updateButtonState();
     if (noControls) this.$el.removeClass('is-video-nocontrols');
-
   }
 
   pause(noControls = false) {
@@ -114,36 +160,51 @@ class BackgroundVideoView extends Backbone.View {
     if (noControls) this.$el.addClass('is-video-nocontrols');
 
     this.video.pause();
-    this.update();
+    this.updateButtonState();
   }
 
   rewind() {
     if (!this.video) return;
-
-    this.update();
     this.video.currentTime = 0;
+    this.updateButtonState();
   }
 
-  update() {
+  updateButtonState() {
     if (!this.video) return;
+    
+    // Update class states
     if (this.isLoopsComplete) this.$el.addClass('is-backgroundvideo-nocontrols');
     this.$el.toggleClass('is-backgroundvideo-playing', !this.video.paused);
     this.$el.toggleClass('is-backgroundvideo-paused', this.video.paused);
+    
+    // Update ARIA attributes for accessibility
+    const $button = this.$el.find('.backgroundvideo__playpause');
+    if ($button.length > 0) {
+      const isPaused = this.video.paused;
+      $button.attr('aria-label', isPaused ? 'Play video' : 'Pause video');
+      $button.attr('aria-pressed', isPaused ? 'false' : 'true');
+    }
   }
 
   onPlayPauseClick(event) {
     event.preventDefault();
-    console.log('Play/Pause button clicked!');
-    console.log('Video element:', this.video);
-    console.log('Video paused:', this.video ? this.video.paused : 'no video');
-    
+    this.togglePlayPause();
+  }
+
+  onPlayPauseKeydown(event) {
+    // Support Space and Enter keys for accessibility
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      this.togglePlayPause();
+    }
+  }
+
+  togglePlayPause() {
     if (!this.video || !this.config._showControls || this.isLoopsComplete) return;
 
     if (this.video.paused) {
-      console.log('Playing video...');
       this.play();
     } else {
-      console.log('Pausing video...');
       this.pause();
     }
 
@@ -171,19 +232,29 @@ class BackgroundVideoView extends Backbone.View {
     if (this.backgroundvideo.length > 0) {
       this.backgroundvideo.on('onscreen', this.onScreenChange);
       this.video = this.backgroundvideo[0];
-      // Set up video ended listener if not already set
-      if (!this.videoEndedListenerAdded) {
-        this.video.addEventListener('ended', this.onVideoEnded.bind(this));
-        this.video.addEventListener('play', this.update.bind(this));
-        this.video.addEventListener('pause', this.update.bind(this));
-        this.video.addEventListener('playing', this.update.bind(this));
-        this.videoEndedListenerAdded = true;
-      }
+      
+      // Set up video listeners (only once)
+      this.setupVideoListeners();
+      
       // Update button state after a short delay to account for autoplay
       setTimeout(() => {
-        this.update();
+        this.updateButtonState();
       }, 100);
     }
+  }
+
+  remove() {
+    // Clean up event listeners when view is removed
+    if (this.video && this.videoListenersAdded) {
+      this.video.removeEventListener('ended', this.onVideoEnded);
+      this.video.removeEventListener('play', this.updateButtonState);
+      this.video.removeEventListener('pause', this.updateButtonState);
+      this.video.removeEventListener('playing', this.updateButtonState);
+      this.video.removeEventListener('error', this.onVideoError);
+      this.video.removeEventListener('loadeddata', this.onVideoLoadedData);
+    }
+    
+    Backbone.View.prototype.remove.call(this);
   }
 
 }
