@@ -50,6 +50,36 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 >>**_onPauseRewind** (boolean): Rewind the video to the beginning when user manually pauses it. Default: `true`
 
+## Accessibility Features
+
+This extension includes comprehensive accessibility support:
+
+### Screen Reader Support
+- Videos are marked with `aria-label="Background video"` and `role="img"`
+- Videos are hidden from screen readers with `aria-hidden="true"` (decorative content)
+- Play/pause button has dynamic `aria-label` that reflects current state:
+  - "Play video" when paused
+  - "Pause video" when playing
+- Button uses `aria-pressed` to indicate toggle state
+- Fallback images include `alt` text and `role="presentation"`
+
+### Keyboard Accessibility
+- Play/pause button is fully keyboard accessible
+- Supports both **Space** and **Enter** keys to toggle playback
+- Focus indicators are provided for keyboard navigation
+
+### Reduced Motion Support
+- Automatically respects user's `prefers-reduced-motion` setting
+- If user has reduced motion enabled:
+  - Autoplay is disabled by default
+  - All animations and transitions are removed
+  - Button hover effects are disabled
+
+### Error Handling
+- Graceful fallback to poster image if video fails to load
+- Console warnings for debugging (not visible to end users)
+- Visual states for loading, ready, and error conditions
+
 ## Default Styling
 
 The background video uses the following CSS defaults:
@@ -117,7 +147,7 @@ When `_showControls` is enabled, a play/pause button is displayed. The default s
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.3.0  
+**Version number:**  2.4.0  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    

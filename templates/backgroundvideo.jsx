@@ -9,7 +9,10 @@ export default function BackgroundVideo(props) {
       preload: "auto",
       poster: _backgroundVideo._graphic,
       muted: _backgroundVideo._isMuted !== false,
-      playsInline: _backgroundVideo._playsinline !== false
+      playsInline: _backgroundVideo._playsinline !== false,
+      'aria-label': 'Background video',
+      role: 'img',
+      'aria-hidden': 'true'
     };
     
     // Only add loop if _loops is -1 (infinite)
@@ -31,9 +34,14 @@ export default function BackgroundVideo(props) {
           ></source>
         </video>
         {_backgroundVideo._showControls && (
-          <button className="backgroundvideo__playpause" aria-label="Play/Pause">
-            <span className="backgroundvideo__play-icon">▶</span>
-            <span className="backgroundvideo__pause-icon">❚❚</span>
+          <button 
+            className="backgroundvideo__playpause" 
+            aria-label="Play video"
+            aria-pressed="false"
+            type="button"
+          >
+            <span className="backgroundvideo__play-icon" aria-hidden="true">▶</span>
+            <span className="backgroundvideo__pause-icon" aria-hidden="true">❚❚</span>
           </button>
         )}
       </div>
@@ -42,7 +50,7 @@ export default function BackgroundVideo(props) {
 
   function UseGraphic() {
     if (_backgroundVideo._graphic) {
-      return <img src={_backgroundVideo._graphic}/>;
+      return <img src={_backgroundVideo._graphic} alt="Background image" role="presentation"/>;
     }
     return null;
   }

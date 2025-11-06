@@ -78,3 +78,39 @@
         display: inline;
     }
 }
+
+// Video state classes
+.is-backgroundvideo-loading {
+    // Add loading indicator styles if needed
+}
+
+.is-backgroundvideo-error {
+    // Video failed to load - fallback image shown
+}
+
+.is-backgroundvideo-ready {
+    // Video loaded successfully
+}
+
+.is-backgroundvideo-fallback {
+    // Show fallback image
+    video {
+        display: none;
+    }
+}
+
+// Respect user's reduced motion preference
+@media (prefers-reduced-motion: reduce) {
+    .backgroundvideo video {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .backgroundvideo__playpause {
+        transition: none !important;
+        
+        &:hover {
+            transform: none !important;
+        }
+    }
+}
