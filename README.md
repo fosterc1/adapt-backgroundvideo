@@ -24,6 +24,10 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 >>**_minHeight** (number): The minimum height in pixels of the video container.
 
+>>**_size** (string): Set the size/scaling of the background video. Options: `auto`, `cover` (default), `contain`, `100% 100%`. Similar to CSS `object-fit` property.
+
+>>**_position** (string): Set the position of the background video within its container. Options: `left top`, `left center`, `left bottom`, `center top`, `center center` (default), `center bottom`, `right top`, `right center`, `right bottom`. Similar to CSS `object-position` property.
+
 ### Playback Controls
 
 >>**_loops** (number): Number of times the video should loop. Use `-1` for infinite loop, `0` for no loop, or a positive number for specific count. Default: `-1`

@@ -22,6 +22,26 @@ export default function BackgroundVideo(props) {
       videoProps.autoPlay = true;
     }
 
+    // Build inline styles for size and position
+    const videoStyle = {};
+    
+    // Set object-fit based on _size
+    const size = _backgroundVideo._size || 'cover';
+    if (size === '100% 100%') {
+      videoStyle.width = '100%';
+      videoStyle.height = '100%';
+      videoStyle.objectFit = 'fill';
+    } else {
+      videoStyle.objectFit = size; // auto, cover, or contain
+    }
+    
+    // Set object-position based on _position
+    if (_backgroundVideo._position) {
+      videoStyle.objectPosition = _backgroundVideo._position;
+    }
+    
+    videoProps.style = videoStyle;
+
     return <video {...videoProps}>
       <source
         src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
@@ -32,7 +52,23 @@ export default function BackgroundVideo(props) {
 
   function UseGraphic() {
     if (_backgroundVideo._graphic) {
-      return <img src={_backgroundVideo._graphic}/>;
+      // Build inline styles for graphic to match video styling
+      const imgStyle = {};
+      
+      const size = _backgroundVideo._size || 'cover';
+      if (size === '100% 100%') {
+        imgStyle.width = '100%';
+        imgStyle.height = '100%';
+        imgStyle.objectFit = 'fill';
+      } else {
+        imgStyle.objectFit = size;
+      }
+      
+      if (_backgroundVideo._position) {
+        imgStyle.objectPosition = _backgroundVideo._position;
+      }
+      
+      return <img src={_backgroundVideo._graphic} style={imgStyle}/>;
     }
     return null;
   }
