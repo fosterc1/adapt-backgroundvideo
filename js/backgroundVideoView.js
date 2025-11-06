@@ -29,6 +29,10 @@ class BackgroundVideoView extends Backbone.View {
   setUpListeners() {
     if (this.video) {
       this.video.addEventListener('ended', this.onVideoEnded.bind(this));
+      // Listen to video play/pause events to update button state
+      this.video.addEventListener('play', this.update.bind(this));
+      this.video.addEventListener('pause', this.update.bind(this));
+      this.video.addEventListener('playing', this.update.bind(this));
     }
 
     document.addEventListener('visibilitychange', () => {
@@ -129,10 +133,19 @@ class BackgroundVideoView extends Backbone.View {
 
   onPlayPauseClick(event) {
     event.preventDefault();
+    console.log('Play/Pause button clicked!');
+    console.log('Video element:', this.video);
+    console.log('Video paused:', this.video ? this.video.paused : 'no video');
+    
     if (!this.video || !this.config._showControls || this.isLoopsComplete) return;
 
-    if (this.video.paused) this.play();
-    else this.pause();
+    if (this.video.paused) {
+      console.log('Playing video...');
+      this.play();
+    } else {
+      console.log('Pausing video...');
+      this.pause();
+    }
 
     this.hasUserPaused = this.video.paused;
     if (this.hasUserPaused && this.config._onPauseRewind) this.rewind();
@@ -161,10 +174,15 @@ class BackgroundVideoView extends Backbone.View {
       // Set up video ended listener if not already set
       if (!this.videoEndedListenerAdded) {
         this.video.addEventListener('ended', this.onVideoEnded.bind(this));
+        this.video.addEventListener('play', this.update.bind(this));
+        this.video.addEventListener('pause', this.update.bind(this));
+        this.video.addEventListener('playing', this.update.bind(this));
         this.videoEndedListenerAdded = true;
       }
-      // Update button state to reflect initial video state
-      this.update();
+      // Update button state after a short delay to account for autoplay
+      setTimeout(() => {
+        this.update();
+      }, 100);
     }
   }
 
