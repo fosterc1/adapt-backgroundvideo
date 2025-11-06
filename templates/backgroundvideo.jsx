@@ -3,10 +3,6 @@ import React from 'react';
 export default function BackgroundVideo(props) {
   const { _backgroundVideo, _screenSize, _id } = props;
 
-  // Check if video should be shown based on configured screen size
-  const configuredScreenSize = _backgroundVideo._screenSize || 'any';
-  const shouldShowVideo = configuredScreenSize === 'any' || configuredScreenSize === _screenSize;
-
   function UseVideo() {
     const videoProps = {
       id: `backgroundvideo-${_id}`,
@@ -41,8 +37,7 @@ export default function BackgroundVideo(props) {
     return null;
   }
 
-  // Show video if configured screen size matches current screen size
-  if (shouldShowVideo && _screenSize !== 'small') {
+  if (_screenSize !== 'small') {
     return <UseVideo />;
   }
   return <UseGraphic />;
