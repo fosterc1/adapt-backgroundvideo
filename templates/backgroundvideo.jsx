@@ -3,11 +3,16 @@ import React from 'react';
 export default function BackgroundVideo(props) {
   const { _backgroundVideo, _screenSize, _id } = props;
 
+  // Safety check - return null if _backgroundVideo is not defined
+  if (!_backgroundVideo) {
+    return null;
+  }
+
   function UseVideo() {
     const videoProps = {
       id: `backgroundvideo-${_id}`,
       preload: "auto",
-      poster: _backgroundVideo._graphic,
+      poster: _backgroundVideo._graphic || '',
       muted: _backgroundVideo._isMuted !== false,
       playsInline: _backgroundVideo._playsinline !== false
     };
@@ -23,13 +28,14 @@ export default function BackgroundVideo(props) {
     }
 
     // Build inline styles for size and position
-    const videoStyle = {};
+    const videoStyle = {
+      width: '100%',
+      height: '100%'
+    };
     
     // Set object-fit based on _size
     const size = _backgroundVideo._size || 'cover';
     if (size === '100% 100%') {
-      videoStyle.width = '100%';
-      videoStyle.height = '100%';
       videoStyle.objectFit = 'fill';
     } else {
       videoStyle.objectFit = size; // auto, cover, or contain
@@ -53,12 +59,13 @@ export default function BackgroundVideo(props) {
   function UseGraphic() {
     if (_backgroundVideo._graphic) {
       // Build inline styles for graphic to match video styling
-      const imgStyle = {};
+      const imgStyle = {
+        width: '100%',
+        height: '100%'
+      };
       
       const size = _backgroundVideo._size || 'cover';
       if (size === '100% 100%') {
-        imgStyle.width = '100%';
-        imgStyle.height = '100%';
         imgStyle.objectFit = 'fill';
       } else {
         imgStyle.objectFit = size;
