@@ -59,7 +59,7 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 **adapt-backgroundVideo** only works on desktop.
 
 ----------------------------
-**Version number:**  1.3.0  
+**Version number:**  1.3.1  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
