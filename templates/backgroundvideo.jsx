@@ -21,18 +21,23 @@ export default function BackgroundVideo(props) {
     if (_backgroundVideo._autoPlay !== false) {
       videoProps.autoPlay = true;
     }
-    
-    // Add controls if _showControls is enabled
-    if (_backgroundVideo._showControls) {
-      videoProps.controls = true;
-    }
 
-    return <video {...videoProps}>
-      <source
-        src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
-        type={_backgroundVideo._mp4 !== '' ? 'video/mp4' : 'video/webm'}
-      ></source>
-    </video>;
+    return (
+      <>
+        <video {...videoProps}>
+          <source
+            src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
+            type={_backgroundVideo._mp4 !== '' ? 'video/mp4' : 'video/webm'}
+          ></source>
+        </video>
+        {_backgroundVideo._showControls && (
+          <button className="backgroundvideo__playpause" aria-label="Play/Pause">
+            <span className="backgroundvideo__play-icon">▶</span>
+            <span className="backgroundvideo__pause-icon">❚❚</span>
+          </button>
+        )}
+      </>
+    );
   }
 
   function UseGraphic() {

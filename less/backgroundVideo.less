@@ -11,12 +11,58 @@
         object-fit: fill;
         object-position: center top;
     }
-    // When controls are enabled, bring video forward so controls are clickable
-    video[controls] {
-        z-index: 1;
-        position: relative;
-    }
 }
+
 .has-backgroundvideo{
     position: relative;
+}
+
+// Custom play/pause button
+.backgroundvideo__playpause {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+    }
+    
+    &:focus {
+        outline: 2px solid white;
+        outline-offset: 2px;
+    }
+}
+
+// Show play icon when paused
+.is-backgroundvideo-paused .backgroundvideo__playpause {
+    .backgroundvideo__play-icon {
+        display: inline;
+    }
+    .backgroundvideo__pause-icon {
+        display: none;
+    }
+}
+
+// Show pause icon when playing
+.is-backgroundvideo-playing .backgroundvideo__playpause {
+    .backgroundvideo__play-icon {
+        display: none;
+    }
+    .backgroundvideo__pause-icon {
+        display: inline;
+    }
 }
