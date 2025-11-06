@@ -1,19 +1,19 @@
 {
   "name": "adapt-backgroundVideo",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "framework": ">=5.14.0",
   "description": "An extension to add videos to the background of an element (menu, page, block)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nachocinalli/adapt-backgroundVideo.git"
+    "url": "https://github.com/fosterc1/adapt-backgroundvideo.git"
   },
   "main": "/js/adapt-backgroundVideo.js",
   "displayName": "Background Video",
   "extension": "backgroundVideo",
   "keywords": ["adapt-plugin", "adapt-extension"],
-  "authors": ["Nacho Cinalli <nachocinalli@gmail.com>"],
+  "authors": ["fosterc1"],
   "license": "GPL-3.0",
-  "homepage": "https://github.com/nachocinalli/adapt-backgroundVideo",
-  "issues": "https://github.com/nachocinalli/adapt-backgroundVideo/issues/",
+  "homepage": "https://github.com/fosterc1/adapt-backgroundvideo",
+  "issues": "https://github.com/fosterc1/adapt-backgroundvideo/issues/",
   "targetAttribute": "_backgroundVideo"
 }

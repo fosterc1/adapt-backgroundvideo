@@ -27,9 +27,9 @@ The following attributes, set within  *course.json*, *contentObjects.json* and *
 **adapt-backgroundVideo** only works on desktop.
 
 ----------------------------
-**Version number:**  2.0.0  
+**Version number:**  1.0.0  
 **Framework versions:**  5.14.0+     
-**Author / maintainer:**  [Nacho Cinalli](https://github.com/nachocinalli/)    
+**Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
 **RTL support:**  
 **Cross-platform coverage:** 
