@@ -54,14 +54,70 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 The background video uses the following CSS defaults:
 - **Size**: `100% 100%` (object-fit: fill) - Video fills the entire container
-- **Position**: `center center` - Video is centered both horizontally and vertically
+- **Position**: `center top` - Video is aligned to the top center of the container
+
+## Play/Pause Button Customization
+
+When `_showControls` is enabled, a play/pause button is displayed. The default styling can be customized by overriding the `.backgroundvideo__playpause` class in your theme CSS:
+
+### Default Button Styles
+```css
+.backgroundvideo__playpause {
+    position: fixed;        /* Fixed to viewport */
+    bottom: 20px;           /* 20px from bottom */
+    right: 20px;            /* 20px from right */
+    z-index: 9999;          /* Always on top */
+    width: 50px;            /* Button width */
+    height: 50px;           /* Button height */
+    border-radius: 50%;     /* Circular button */
+    background-color: rgba(0, 0, 0, 0.7);  /* Semi-transparent black */
+    border: 2px solid rgba(255, 255, 255, 0.8);  /* White border */
+    color: white;
+    pointer-events: auto;   /* Required for button to receive clicks */
+}
+```
+
+### Customization Examples
+
+**Move button to bottom left:**
+```css
+.backgroundvideo__playpause {
+    left: 20px;
+    right: auto;
+}
+```
+
+**Change button color to blue:**
+```css
+.backgroundvideo__playpause {
+    background-color: rgba(0, 100, 255, 0.8);
+    border-color: white;
+}
+```
+
+**Make button larger:**
+```css
+.backgroundvideo__playpause {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+}
+```
+
+**Position relative to parent instead of viewport:**
+```css
+.backgroundvideo__playpause {
+    position: absolute;
+    /* Now positioned relative to video container */
+}
+```
 
 ## Limitations
  
-**adapt-backgroundVideo** only works on desktop.
+The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  1.5.2  
+**Version number:**  2.3.0  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:**    
