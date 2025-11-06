@@ -3,16 +3,11 @@ import React from 'react';
 export default function BackgroundVideo(props) {
   const { _backgroundVideo, _screenSize, _id } = props;
 
-  // Safety check - return null if _backgroundVideo is not defined
-  if (!_backgroundVideo) {
-    return null;
-  }
-
   function UseVideo() {
     const videoProps = {
       id: `backgroundvideo-${_id}`,
       preload: "auto",
-      poster: _backgroundVideo._graphic || '',
+      poster: _backgroundVideo._graphic,
       muted: _backgroundVideo._isMuted !== false,
       playsInline: _backgroundVideo._playsinline !== false
     };
@@ -27,18 +22,17 @@ export default function BackgroundVideo(props) {
       videoProps.autoPlay = true;
     }
 
-    // Build inline styles for size and position
-    const videoStyle = {
-      width: '100%',
-      height: '100%'
-    };
+    // Build inline styles for size and position (only if specified)
+    const videoStyle = {};
     
     // Set object-fit based on _size
-    const size = _backgroundVideo._size || 'cover';
-    if (size === '100% 100%') {
-      videoStyle.objectFit = 'fill';
-    } else {
-      videoStyle.objectFit = size; // auto, cover, or contain
+    if (_backgroundVideo._size) {
+      const size = _backgroundVideo._size;
+      if (size === '100% 100%') {
+        videoStyle.objectFit = 'fill';
+      } else {
+        videoStyle.objectFit = size; // auto, cover, or contain
+      }
     }
     
     // Set object-position based on _position
@@ -46,7 +40,10 @@ export default function BackgroundVideo(props) {
       videoStyle.objectPosition = _backgroundVideo._position;
     }
     
-    videoProps.style = videoStyle;
+    // Only add style if we have any styles to add
+    if (Object.keys(videoStyle).length > 0) {
+      videoProps.style = videoStyle;
+    }
 
     return <video {...videoProps}>
       <source
@@ -58,24 +55,28 @@ export default function BackgroundVideo(props) {
 
   function UseGraphic() {
     if (_backgroundVideo._graphic) {
-      // Build inline styles for graphic to match video styling
-      const imgStyle = {
-        width: '100%',
-        height: '100%'
-      };
+      // Build inline styles for graphic to match video styling (only if specified)
+      const imgStyle = {};
       
-      const size = _backgroundVideo._size || 'cover';
-      if (size === '100% 100%') {
-        imgStyle.objectFit = 'fill';
-      } else {
-        imgStyle.objectFit = size;
+      if (_backgroundVideo._size) {
+        const size = _backgroundVideo._size;
+        if (size === '100% 100%') {
+          imgStyle.objectFit = 'fill';
+        } else {
+          imgStyle.objectFit = size;
+        }
       }
       
       if (_backgroundVideo._position) {
         imgStyle.objectPosition = _backgroundVideo._position;
       }
       
-      return <img src={_backgroundVideo._graphic} style={imgStyle}/>;
+      // Only add style if we have any styles to add
+      if (Object.keys(imgStyle).length > 0) {
+        return <img src={_backgroundVideo._graphic} style={imgStyle}/>;
+      }
+      
+      return <img src={_backgroundVideo._graphic}/>;
     }
     return null;
   }
