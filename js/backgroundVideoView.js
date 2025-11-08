@@ -147,7 +147,12 @@ class BackgroundVideoView extends Backbone.View {
     // Handle play promise for better error handling
     if (playPromise !== undefined) {
       playPromise.catch(error => {
-        console.warn('BackgroundVideo: Play was prevented', error.name);
+        // Silently handle autoplay prevention - this is expected browser behavior
+        // The video will play when user interacts with the page or uses controls
+        // Only log unexpected errors
+        if (error.name !== 'AbortError' && error.name !== 'NotAllowedError') {
+          console.warn('BackgroundVideo: Unexpected video error', error.name);
+        }
       });
     }
     

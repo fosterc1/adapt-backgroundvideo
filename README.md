@@ -111,7 +111,8 @@ This extension includes comprehensive accessibility support:
 
 ### Error Handling
 - Graceful fallback to poster image if video fails to load
-- Console warnings for debugging (not visible to end users)
+- Silent handling of browser autoplay prevention (expected behavior)
+- Console warnings only for unexpected errors
 - Visual states for loading, ready, and error conditions
 
 ## Default Styling
@@ -249,7 +250,7 @@ All modern browsers with HTML5 video support.
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.7.1  
+**Version number:**  2.7.2  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, and reduced motion support  
