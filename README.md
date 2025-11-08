@@ -1,6 +1,26 @@
-# adapt-backgroundVideo  
+# adapt-backgroundVideo
 
-**BackgroundVideo** is an *extension* to add videos to the background of an element (menu, page, article, block).  
+[![Version](https://img.shields.io/badge/version-2.7.4-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
+[![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
+[![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
+
+**Background Video** is an *extension* for the Adapt Framework that adds responsive background videos to any element (menu, page, article, block) with device-specific optimization and comprehensive accessibility support.
+
+## ✨ Features
+
+- 📱 **Device-Specific Videos** - Serve optimized videos per screen size (xlarge, large, medium, small)
+- ♿ **WCAG 2.1 AA/AAA Compliant** - Full accessibility with screen readers, keyboard navigation, and reduced motion
+- 🌍 **RTL Support** - Complete right-to-left language support using CSS logical properties
+- 🎨 **Fully Customizable** - 16 CSS custom properties for complete styling control
+- 📐 **Responsive Design** - Device-specific posters and videos for optimal performance
+- ⚡ **Smart Error Handling** - Graceful fallback to poster images with silent autoplay handling
+- 🎭 **Reduced Motion** - Respects system accessibility preferences
+- 🌐 **Cross-Browser** - Works on all modern browsers with HTML5 video support
+- 🎮 **User Controls** - Optional play/pause buttons with translatable labels
+- 📖 **Comprehensive Docs** - Extensive documentation and customization guide
+
+**📖 See [CUSTOMIZATION.md](CUSTOMIZATION.md) for complete styling guide with 8+ examples**
 
 ## Settings Overview
 
@@ -247,12 +267,66 @@ All modern browsers with HTML5 video support.
 
 ## Limitations
  
-The background video extension works on all screen sizes including mobile devices.
+The background video extension works on all screen sizes including mobile devices. Videos only play on their exact configured screen size (no fallback cascade).
 
-----------------------------
-**Version number:**  2.7.3  
-**Framework versions:**  5.14.0+     
-**Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
-**Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, reduced motion support, and 44px minimum touch targets  
-**RTL support:** Yes - Uses CSS logical properties for proper right-to-left language support  
-**Cross-platform coverage:** Desktop (Windows, macOS, Linux), Mobile (iOS, Android), Tablets - All modern browsers (Chrome, Firefox, Safari, Edge) 
+---
+
+## 📝 Changelog
+
+### v2.7.3 (2025-01-08) - RTL and Mobile Accessibility
+- ✅ **Full RTL Support** - CSS logical properties for right-to-left languages
+- ✅ **WCAG 2.1 AAA** - 44px minimum touch targets on mobile
+- ✅ **Enhanced Focus** - :focus-visible for better keyboard navigation
+
+### v2.7.2 (2025-01-08) - Console Improvements
+- ✅ **Cleaner Console** - Silent handling of expected autoplay prevention
+
+### v2.7.1 (2025-01-08) - Fallback Fix
+- ✅ **Exact Matching** - Videos only play on their configured screen size
+
+### v2.7.0 (2025-01-08) - Device-Specific Only (BREAKING)
+- 🔴 **Breaking Change** - Removed root-level _mp4/_webm/_graphic
+- ✅ **Device-Specific Posters** - Each size has its own poster image
+- ✅ **Cleaner Structure** - _isEnabled first, then size objects
+
+### v2.6.0 (2025-01-07) - Responsive Breakpoints
+- ✅ **Device-Specific Videos** - _xlarge, _large, _medium, _small support
+- ✅ **Intelligent Fallback** - Automatic size cascade (later removed in v2.7.1)
+
+### v2.5.0 (Previous) - CSS Customization
+- ✅ **CSS Variables** - 16 custom properties for styling
+- ✅ **Rem Units** - Scalable sizing throughout
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/fosterc1/adapt-backgroundvideo/issues)
+- **Adapt Community**: [Community Forums](https://community.adaptlearning.org/)
+
+---
+
+**Author / maintainer:** [fosterc1](https://github.com/fosterc1/)<br>
+**Accessibility support:** WCAG 2.1 AA/AAA Compliant - Full screen reader support, keyboard navigation, reduced motion, 44px touch targets<br>
+**RTL support:** Yes - CSS logical properties for Arabic, Hebrew, Persian, Urdu, etc.<br>
+**Cross-platform coverage:** Chrome 60+, Firefox 55+, Safari 12+, Edge 79+, iOS Safari 12+, Chrome Mobile (Android)<br>
+**Adapt Framework:** v5.14.0+<br>
+**Version:** 2.7.4
+
+---
+
+**Made with ❤️ for the Adapt Learning Community** 
