@@ -181,7 +181,12 @@ class BackgroundVideoView extends Backbone.View {
     const $button = this.$el.find('.backgroundvideo__playpause');
     if ($button.length > 0) {
       const isPaused = this.video.paused;
-      $button.attr('aria-label', isPaused ? 'Play video' : 'Pause video');
+      // Use translatable globals for button labels
+      const globals = this.model.get('_globals');
+      const playLabel = globals?.playButton || 'Play video';
+      const pauseLabel = globals?.pauseButton || 'Pause video';
+      
+      $button.attr('aria-label', isPaused ? playLabel : pauseLabel);
       $button.attr('aria-pressed', isPaused ? 'false' : 'true');
     }
   }

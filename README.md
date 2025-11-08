@@ -86,9 +86,36 @@ The background video uses the following CSS defaults:
 - **Size**: `100% 100%` (object-fit: fill) - Video fills the entire container
 - **Position**: `center top` - Video is aligned to the top center of the container
 
+## Styling & Customization
+
+The extension uses **CSS Custom Properties** for easy styling customization. All button and video styling can be changed via CSS without modifying the extension code.
+
+**📖 See [CUSTOMIZATION.md](CUSTOMIZATION.md) for complete styling guide with 8+ examples**
+
+### Quick CSS Variables
+
+```css
+.backgroundvideo {
+  --button-size: 3.125rem;
+  --button-position-bottom: 1.25rem;
+  --button-position-right: 1.25rem;
+  --button-bg-color: rgba(0, 0, 0, 0.7);
+  --button-text-color: white;
+  /* ...and more */
+}
+```
+
+### What You Can Customize
+
+✅ Button size, position, and colors  
+✅ Button hover effects and transitions  
+✅ Video container and positioning  
+✅ Responsive breakpoints  
+✅ Dark mode support  
+
 ## Play/Pause Button Customization
 
-When `_showControls` is enabled, a play/pause button is displayed. The default styling can be customized by overriding the `.backgroundvideo__playpause` class in your theme CSS:
+When `_showControls` is enabled, a play/pause button is displayed in the bottom right corner. All styling can be customized via CSS variables:
 
 ### Default Button Styles
 ```css
@@ -141,6 +168,43 @@ When `_showControls` is enabled, a play/pause button is displayed. The default s
     /* Now positioned relative to video container */
 }
 ```
+
+**📖 For more customization examples, see [CUSTOMIZATION.md](CUSTOMIZATION.md)**
+
+## Translations
+
+The extension supports multilingual courses through translatable globals:
+
+- **ariaRegion**: ARIA label for the video region (screen readers)
+- **playButton**: Label for the play button
+- **pauseButton**: Label for the pause button
+
+These can be translated through the Adapt Authoring Tool or by updating the globals in your course JSON files.
+
+## Tips
+
+- **Video Format**: Provide both MP4 and WebM formats for maximum browser compatibility
+- **Poster Image**: Always include a poster image for loading states and fallback
+- **File Size**: Optimize video files - large files impact page load performance
+- **Autoplay**: Consider user experience - muted autoplay is recommended
+- **Controls**: Enable `_showControls` for user control over playback
+- **Accessibility**: The extension automatically respects `prefers-reduced-motion`
+- **Mobile**: Videos play inline on mobile (no fullscreen) when `_playsinline` is enabled
+- **Testing**: Test on actual devices, especially mobile, to ensure smooth playback
+- **Customization**: Use CSS variables for easy styling - see CUSTOMIZATION.md
+- **Loop Count**: Use `-1` for infinite loop, `0` for no loop, or positive number for specific count
+- **Positioning**: Default is `center top` - adjust via CSS if needed
+
+## Browser Support
+
+- **Chrome** 60+
+- **Firefox** 55+
+- **Safari** 12+
+- **Edge** 79+
+- **iOS Safari** 12+
+- **Chrome Mobile** (Android)
+
+All modern browsers with HTML5 video support.
 
 ## Limitations
  

@@ -3,7 +3,32 @@
 	"$schema": "http://json-schema.org/draft-04/schema",
 	"id": "http://jsonschema.net",
 	"required": false,
-	"globals": {},
+	"globals": {
+		"ariaRegion": {
+			"type": "string",
+			"required": true,
+			"default": "Background video with playback controls.",
+			"inputType": "Text",
+			"validators": [],
+			"translatable": true
+		},
+		"playButton": {
+			"type": "string",
+			"required": true,
+			"default": "Play video",
+			"inputType": "Text",
+			"validators": [],
+			"translatable": true
+		},
+		"pauseButton": {
+			"type": "string",
+			"required": true,
+			"default": "Pause video",
+			"inputType": "Text",
+			"validators": [],
+			"translatable": true
+		}
+	},
 	"properties": {
 		"pluginLocations": {
 			"type": "object",
