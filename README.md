@@ -1,6 +1,6 @@
 # adapt-backgroundVideo
 
-[![Version](https://img.shields.io/badge/version-2.7.3-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![Version](https://img.shields.io/badge/version-2.7.4-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 [![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
