@@ -1,1138 +1,1194 @@
 {
-	"type": "object",
-	"$schema": "http://json-schema.org/draft-04/schema",
-	"id": "http://jsonschema.net",
-	"required": false,
-	"globals": {
-		"ariaRegion": {
-			"type": "string",
-			"required": true,
-			"default": "Background video with playback controls.",
-			"inputType": "Text",
-			"validators": [],
-			"translatable": true
-		},
-		"playButton": {
-			"type": "string",
-			"required": true,
-			"default": "Play video",
-			"inputType": "Text",
-			"validators": [],
-			"translatable": true
-		},
-		"pauseButton": {
-			"type": "string",
-			"required": true,
-			"default": "Pause video",
-			"inputType": "Text",
-			"validators": [],
-			"translatable": true
-		}
-	},
-	"properties": {
-		"pluginLocations": {
-			"type": "object",
-			"required": true,
-			"properties": {
-				"config": {
-					"type": "object"
-				},
-				"course": {
-					"type": "object",
-					"properties": {
-						"_backgroundVideo": {
-							"type": "object",
-							"required": false,
-							"legend": "Background Video",
-							"properties": {
-								"_isEnabled": {
-									"type": "boolean",
-									"required": true,
-									"default": false,
-									"title": "Is enabled",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Enable or disable the Background Video"
-								},
-								"_mp4": {
-									"type": "string",
-									"required": true,
-									"default": "",
-									"title": "MP4 Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an MP4 video",
-									"translatable": false
-								},
-								"_webm": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "WEBM Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an WEBM video",
-									"translatable": false
-								},
-								"_graphic": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Graphic",
-									"inputType": "Asset:image",
-									"validators": [],
-									"help": "Image displayed before the video is played",
-									"translatable": false
-								},
-								"_selector": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Selector",
-									"inputType": "Text",
-									"validators": [],
-									"help": "The selector for the Background Video"
-								},
-								"_minHeight": {
-									"type": "number",
-									"required": false,
-									"default": "",
-									"title": "Min Height",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Minimum height in pixels for the video container"
-								},
-								"_loops": {
-									"type": "number",
-									"required": false,
-									"default": -1,
-									"title": "Loops",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
-								},
-								"_isMuted": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Mute Video",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Start the video muted"
-								},
-								"_autoPlay": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Auto Play",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Automatically play the video when it comes into view"
-								},
-								"_playsinline": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Play Inline",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Play video inline on mobile devices"
-								},
-								"_onScreenPercentInviewVertical": {
-									"type": "number",
-									"required": false,
-									"default": 1,
-									"title": "On Screen Percentage",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
-								},
-								"_playFirstViewOnly": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Play First View Only",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Only play the video the first time it comes into view"
-								},
-								"_offScreenPause": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Pause When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Pause the video when it goes off screen"
-								},
-								"_offScreenRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Rewind When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when it goes off screen"
-								},
-								"_showControls": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Show Controls",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Show play/pause and sound controls"
-								},
-								"_onPauseRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Rewind On Pause",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when user manually pauses it"
-								},
-								"_xlarge": {
-									"type": "object",
-									"required": false,
-									"title": "Extra Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for extra large devices (1440px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for extra large devices (1440px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_large": {
-									"type": "object",
-									"required": false,
-									"title": "Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for large devices (1024px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for large devices (1024px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_medium": {
-									"type": "object",
-									"required": false,
-									"title": "Medium Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for medium devices (768px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for medium devices (768px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_small": {
-									"type": "object",
-									"required": false,
-									"title": "Small Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for small devices (mobile, up to 767px)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for small devices (mobile, up to 767px)",
-											"translatable": false
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"contentobject": {
-					"type": "object",
-					"properties": {
-						"_backgroundVideo": {
-							"type": "object",
-							"required": false,
-							"legend": "Background Video",
-							"properties": {
-								"_isEnabled": {
-									"type": "boolean",
-									"required": true,
-									"default": false,
-									"title": "Is enabled",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Enable or disable the Background Video"
-								},
-								"_mp4": {
-									"type": "string",
-									"required": true,
-									"default": "",
-									"title": "MP4 Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an MP4 video",
-									"translatable": false
-								},
-								"_webm": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "WEBM Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an WEBM video",
-									"translatable": false
-								},
-								"_graphic": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Graphic",
-									"inputType": "Asset:image",
-									"validators": [],
-									"help": "Image displayed before the video is played",
-									"translatable": false
-								},
-								"_selector": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Selector",
-									"inputType": "Text",
-									"validators": [],
-									"help": "The selector for the Background Video"
-								},
-								"_minHeight": {
-									"type": "number",
-									"required": false,
-									"default": "",
-									"title": "Min Height",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Minimum height in pixels for the video container"
-								},
-								"_loops": {
-									"type": "number",
-									"required": false,
-									"default": -1,
-									"title": "Loops",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
-								},
-								"_isMuted": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Mute Video",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Start the video muted"
-								},
-								"_autoPlay": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Auto Play",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Automatically play the video when it comes into view"
-								},
-								"_playsinline": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Play Inline",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Play video inline on mobile devices"
-								},
-								"_onScreenPercentInviewVertical": {
-									"type": "number",
-									"required": false,
-									"default": 1,
-									"title": "On Screen Percentage",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
-								},
-								"_playFirstViewOnly": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Play First View Only",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Only play the video the first time it comes into view"
-								},
-								"_offScreenPause": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Pause When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Pause the video when it goes off screen"
-								},
-								"_offScreenRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Rewind When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when it goes off screen"
-								},
-								"_showControls": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Show Controls",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Show play/pause and sound controls"
-								},
-								"_onPauseRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Rewind On Pause",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when user manually pauses it"
-								},
-								"_xlarge": {
-									"type": "object",
-									"required": false,
-									"title": "Extra Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for extra large devices (1440px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for extra large devices (1440px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_large": {
-									"type": "object",
-									"required": false,
-									"title": "Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for large devices (1024px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for large devices (1024px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_medium": {
-									"type": "object",
-									"required": false,
-									"title": "Medium Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for medium devices (768px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for medium devices (768px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_small": {
-									"type": "object",
-									"required": false,
-									"title": "Small Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for small devices (mobile, up to 767px)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for small devices (mobile, up to 767px)",
-											"translatable": false
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"article": {
-					"type": "object",
-					"properties": {
-						"_backgroundVideo": {
-							"type": "object",
-							"required": false,
-							"legend": "Background Video",
-							"properties": {
-								"_isEnabled": {
-									"type": "boolean",
-									"required": true,
-									"default": false,
-									"title": "Is enabled",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Enable or disable the Background Video"
-								},
-								"_mp4": {
-									"type": "string",
-									"required": true,
-									"default": "",
-									"title": "MP4 Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an MP4 video",
-									"translatable": false
-								},
-								"_webm": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "WEBM Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an WEBM video",
-									"translatable": false
-								},
-								"_graphic": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Graphic",
-									"inputType": "Asset:image",
-									"validators": [],
-									"help": "Image displayed before the video is played",
-									"translatable": false
-								},
-								"_selector": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Selector",
-									"inputType": "Text",
-									"validators": [],
-									"help": "The selector for the Background Video"
-								},
-								"_minHeight": {
-									"type": "number",
-									"required": false,
-									"default": "",
-									"title": "Min Height",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Minimum height in pixels for the video container"
-								},
-								"_loops": {
-									"type": "number",
-									"required": false,
-									"default": -1,
-									"title": "Loops",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
-								},
-								"_isMuted": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Mute Video",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Start the video muted"
-								},
-								"_autoPlay": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Auto Play",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Automatically play the video when it comes into view"
-								},
-								"_playsinline": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Play Inline",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Play video inline on mobile devices"
-								},
-								"_onScreenPercentInviewVertical": {
-									"type": "number",
-									"required": false,
-									"default": 1,
-									"title": "On Screen Percentage",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
-								},
-								"_playFirstViewOnly": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Play First View Only",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Only play the video the first time it comes into view"
-								},
-								"_offScreenPause": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Pause When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Pause the video when it goes off screen"
-								},
-								"_offScreenRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Rewind When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when it goes off screen"
-								},
-								"_showControls": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Show Controls",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Show play/pause and sound controls"
-								},
-								"_onPauseRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Rewind On Pause",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when user manually pauses it"
-								},
-								"_xlarge": {
-									"type": "object",
-									"required": false,
-									"title": "Extra Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for extra large devices (1440px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for extra large devices (1440px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_large": {
-									"type": "object",
-									"required": false,
-									"title": "Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for large devices (1024px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for large devices (1024px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_medium": {
-									"type": "object",
-									"required": false,
-									"title": "Medium Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for medium devices (768px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for medium devices (768px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_small": {
-									"type": "object",
-									"required": false,
-									"title": "Small Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for small devices (mobile, up to 767px)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for small devices (mobile, up to 767px)",
-											"translatable": false
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"block": {
-					"type": "object",
-					"properties": {
-						"_backgroundVideo": {
-							"type": "object",
-							"required": false,
-							"legend": "Background Video",
-							"properties": {
-								"_isEnabled": {
-									"type": "boolean",
-									"required": true,
-									"default": false,
-									"title": "Is enabled",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Enable or disable the Background Video"
-								},
-								"_mp4": {
-									"type": "string",
-									"required": true,
-									"default": "",
-									"title": "MP4 Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an MP4 video",
-									"translatable": false
-								},
-								"_webm": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "WEBM Link",
-									"inputType": "Asset:video",
-									"validators": [],
-									"help": "Link to an WEBM video",
-									"translatable": false
-								},
-								"_graphic": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Graphic",
-									"inputType": "Asset:image",
-									"validators": [],
-									"help": "Image displayed before the video is played",
-									"translatable": false
-								},
-								"_selector": {
-									"type": "string",
-									"required": false,
-									"default": "",
-									"title": "Selector",
-									"inputType": "Text",
-									"validators": [],
-									"help": "The selector for the Background Video"
-								},
-								"_minHeight": {
-									"type": "number",
-									"required": false,
-									"default": "",
-									"title": "Min Height",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Minimum height in pixels for the video container"
-								},
-								"_loops": {
-									"type": "number",
-									"required": false,
-									"default": -1,
-									"title": "Loops",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
-								},
-								"_isMuted": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Mute Video",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Start the video muted"
-								},
-								"_autoPlay": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Auto Play",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Automatically play the video when it comes into view"
-								},
-								"_playsinline": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Play Inline",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Play video inline on mobile devices"
-								},
-								"_onScreenPercentInviewVertical": {
-									"type": "number",
-									"required": false,
-									"default": 1,
-									"title": "On Screen Percentage",
-									"inputType": "Number",
-									"validators": [
-										"number"
-									],
-									"help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
-								},
-								"_playFirstViewOnly": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Play First View Only",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Only play the video the first time it comes into view"
-								},
-								"_offScreenPause": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Pause When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Pause the video when it goes off screen"
-								},
-								"_offScreenRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": false,
-									"title": "Rewind When Off Screen",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when it goes off screen"
-								},
-								"_showControls": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Show Controls",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Show play/pause and sound controls"
-								},
-								"_onPauseRewind": {
-									"type": "boolean",
-									"required": false,
-									"default": true,
-									"title": "Rewind On Pause",
-									"inputType": "Checkbox",
-									"validators": [],
-									"help": "Rewind the video when user manually pauses it"
-								},
-								"_xlarge": {
-									"type": "object",
-									"required": false,
-									"title": "Extra Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for extra large devices (1440px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "XLarge WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for extra large devices (1440px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_large": {
-									"type": "object",
-									"required": false,
-									"title": "Large Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for large devices (1024px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Large WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for large devices (1024px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_medium": {
-									"type": "object",
-									"required": false,
-									"title": "Medium Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for medium devices (768px+)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Medium WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for medium devices (768px+)",
-											"translatable": false
-										}
-									}
-								},
-								"_small": {
-									"type": "object",
-									"required": false,
-									"title": "Small Device Video",
-									"properties": {
-										"_mp4": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small MP4",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "MP4 video for small devices (mobile, up to 767px)",
-											"translatable": false
-										},
-										"_webm": {
-											"type": "string",
-											"required": false,
-											"default": "",
-											"title": "Small WEBM",
-											"inputType": "Asset:video",
-											"validators": [],
-											"help": "WEBM video for small devices (mobile, up to 767px)",
-											"translatable": false
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"component": {
-					"type": "object"
-				}
-			}
-		}
-	}
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "required": false,
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "Background video with playback controls.",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "playButton": {
+      "type": "string",
+      "required": true,
+      "default": "Play video",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "pauseButton": {
+      "type": "string",
+      "required": true,
+      "default": "Pause video",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    }
+  },
+  "properties": {
+    "pluginLocations": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "config": {
+          "type": "object"
+        },
+        "course": {
+          "type": "object",
+          "properties": {
+            "_backgroundVideo": {
+              "type": "object",
+              "required": false,
+              "legend": "Background Video",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable or disable the Background Video"
+                },
+                "_xlarge": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Extra Large Device (1440px+)",
+                  "help": "Video and poster for extra large screens (desktop high-res)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_large": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Large Device (1024px+)",
+                  "help": "Video and poster for large screens (desktop standard)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_medium": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Medium Device (768px+)",
+                  "help": "Video and poster for medium screens (tablets)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_small": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Small Device (up to 767px)",
+                  "help": "Video and poster for small screens (mobile)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_selector": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Selector",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The selector for the Background Video"
+                },
+                "_minHeight": {
+                  "type": "number",
+                  "required": false,
+                  "default": "",
+                  "title": "Min Height",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Minimum height in pixels for the video container"
+                },
+                "_loops": {
+                  "type": "number",
+                  "required": false,
+                  "default": -1,
+                  "title": "Loops",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
+                },
+                "_isMuted": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Mute Video",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Start the video muted"
+                },
+                "_autoPlay": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Auto Play",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Automatically play the video when it comes into view"
+                },
+                "_playsinline": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Play Inline",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Play video inline on mobile devices"
+                },
+                "_onScreenPercentInviewVertical": {
+                  "type": "number",
+                  "required": false,
+                  "default": 1,
+                  "title": "On Screen Percentage",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
+                },
+                "_playFirstViewOnly": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Play First View Only",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Only play the video the first time it comes into view"
+                },
+                "_offScreenPause": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Pause When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Pause the video when it goes off screen"
+                },
+                "_offScreenRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Rewind When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when it goes off screen"
+                },
+                "_showControls": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Show Controls",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Show play/pause and sound controls"
+                },
+                "_onPauseRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Rewind On Pause",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when user manually pauses it"
+                }
+              }
+            }
+          }
+        },
+        "contentobject": {
+          "type": "object",
+          "properties": {
+            "_backgroundVideo": {
+              "type": "object",
+              "required": false,
+              "legend": "Background Video",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable or disable the Background Video"
+                },
+                "_xlarge": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Extra Large Device (1440px+)",
+                  "help": "Video and poster for extra large screens (desktop high-res)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_large": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Large Device (1024px+)",
+                  "help": "Video and poster for large screens (desktop standard)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_medium": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Medium Device (768px+)",
+                  "help": "Video and poster for medium screens (tablets)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_small": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Small Device (up to 767px)",
+                  "help": "Video and poster for small screens (mobile)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_selector": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Selector",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The selector for the Background Video"
+                },
+                "_minHeight": {
+                  "type": "number",
+                  "required": false,
+                  "default": "",
+                  "title": "Min Height",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Minimum height in pixels for the video container"
+                },
+                "_loops": {
+                  "type": "number",
+                  "required": false,
+                  "default": -1,
+                  "title": "Loops",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
+                },
+                "_isMuted": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Mute Video",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Start the video muted"
+                },
+                "_autoPlay": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Auto Play",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Automatically play the video when it comes into view"
+                },
+                "_playsinline": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Play Inline",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Play video inline on mobile devices"
+                },
+                "_onScreenPercentInviewVertical": {
+                  "type": "number",
+                  "required": false,
+                  "default": 1,
+                  "title": "On Screen Percentage",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
+                },
+                "_playFirstViewOnly": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Play First View Only",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Only play the video the first time it comes into view"
+                },
+                "_offScreenPause": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Pause When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Pause the video when it goes off screen"
+                },
+                "_offScreenRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Rewind When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when it goes off screen"
+                },
+                "_showControls": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Show Controls",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Show play/pause and sound controls"
+                },
+                "_onPauseRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Rewind On Pause",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when user manually pauses it"
+                }
+              }
+            }
+          }
+        },
+        "article": {
+          "type": "object",
+          "properties": {
+            "_backgroundVideo": {
+              "type": "object",
+              "required": false,
+              "legend": "Background Video",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable or disable the Background Video"
+                },
+                "_xlarge": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Extra Large Device (1440px+)",
+                  "help": "Video and poster for extra large screens (desktop high-res)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_large": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Large Device (1024px+)",
+                  "help": "Video and poster for large screens (desktop standard)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_medium": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Medium Device (768px+)",
+                  "help": "Video and poster for medium screens (tablets)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_small": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Small Device (up to 767px)",
+                  "help": "Video and poster for small screens (mobile)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_selector": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Selector",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The selector for the Background Video"
+                },
+                "_minHeight": {
+                  "type": "number",
+                  "required": false,
+                  "default": "",
+                  "title": "Min Height",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Minimum height in pixels for the video container"
+                },
+                "_loops": {
+                  "type": "number",
+                  "required": false,
+                  "default": -1,
+                  "title": "Loops",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
+                },
+                "_isMuted": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Mute Video",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Start the video muted"
+                },
+                "_autoPlay": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Auto Play",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Automatically play the video when it comes into view"
+                },
+                "_playsinline": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Play Inline",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Play video inline on mobile devices"
+                },
+                "_onScreenPercentInviewVertical": {
+                  "type": "number",
+                  "required": false,
+                  "default": 1,
+                  "title": "On Screen Percentage",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
+                },
+                "_playFirstViewOnly": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Play First View Only",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Only play the video the first time it comes into view"
+                },
+                "_offScreenPause": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Pause When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Pause the video when it goes off screen"
+                },
+                "_offScreenRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Rewind When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when it goes off screen"
+                },
+                "_showControls": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Show Controls",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Show play/pause and sound controls"
+                },
+                "_onPauseRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Rewind On Pause",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when user manually pauses it"
+                }
+              }
+            }
+          }
+        },
+        "block": {
+          "type": "object",
+          "properties": {
+            "_backgroundVideo": {
+              "type": "object",
+              "required": false,
+              "legend": "Background Video",
+              "properties": {
+                "_isEnabled": {
+                  "type": "boolean",
+                  "required": true,
+                  "default": false,
+                  "title": "Is enabled",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Enable or disable the Background Video"
+                },
+                "_xlarge": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Extra Large Device (1440px+)",
+                  "help": "Video and poster for extra large screens (desktop high-res)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_large": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Large Device (1024px+)",
+                  "help": "Video and poster for large screens (desktop standard)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_medium": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Medium Device (768px+)",
+                  "help": "Video and poster for medium screens (tablets)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_small": {
+                  "type": "object",
+                  "required": false,
+                  "title": "Small Device (up to 767px)",
+                  "help": "Video and poster for small screens (mobile)",
+                  "properties": {
+                    "_mp4": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "MP4 Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "MP4 video file for this screen size",
+                      "translatable": false
+                    },
+                    "_webm": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "WEBM Video",
+                      "inputType": "Asset:video",
+                      "validators": [],
+                      "help": "WEBM video file for this screen size",
+                      "translatable": false
+                    },
+                    "_graphic": {
+                      "type": "string",
+                      "required": false,
+                      "default": "",
+                      "title": "Poster Image",
+                      "inputType": "Asset:image",
+                      "validators": [],
+                      "help": "Fallback poster image for this screen size",
+                      "translatable": false
+                    }
+                  }
+                },
+                "_selector": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "Selector",
+                  "inputType": "Text",
+                  "validators": [],
+                  "help": "The selector for the Background Video"
+                },
+                "_minHeight": {
+                  "type": "number",
+                  "required": false,
+                  "default": "",
+                  "title": "Min Height",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Minimum height in pixels for the video container"
+                },
+                "_loops": {
+                  "type": "number",
+                  "required": false,
+                  "default": -1,
+                  "title": "Loops",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Number of times the video should loop (-1 for infinite, 0 for no loop, >0 for specific count)"
+                },
+                "_isMuted": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Mute Video",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Start the video muted"
+                },
+                "_autoPlay": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Auto Play",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Automatically play the video when it comes into view"
+                },
+                "_playsinline": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Play Inline",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Play video inline on mobile devices"
+                },
+                "_onScreenPercentInviewVertical": {
+                  "type": "number",
+                  "required": false,
+                  "default": 1,
+                  "title": "On Screen Percentage",
+                  "inputType": "Number",
+                  "validators": [
+                    "number"
+                  ],
+                  "help": "Percentage of video that must be visible on screen to play (0-1, where 1 = 100%)"
+                },
+                "_playFirstViewOnly": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Play First View Only",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Only play the video the first time it comes into view"
+                },
+                "_offScreenPause": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Pause When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Pause the video when it goes off screen"
+                },
+                "_offScreenRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": false,
+                  "title": "Rewind When Off Screen",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when it goes off screen"
+                },
+                "_showControls": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Show Controls",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Show play/pause and sound controls"
+                },
+                "_onPauseRewind": {
+                  "type": "boolean",
+                  "required": false,
+                  "default": true,
+                  "title": "Rewind On Pause",
+                  "inputType": "Checkbox",
+                  "validators": [],
+                  "help": "Rewind the video when user manually pauses it"
+                }
+              }
+            }
+          }
+        },
+        "component": {
+          "type": "object"
+        }
+      }
+    }
+  }
 }

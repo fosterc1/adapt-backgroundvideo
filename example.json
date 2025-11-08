@@ -2,24 +2,25 @@
 {
   "_backgroundVideo": {
     "_isEnabled": true,
-    "_mp4": "course/en/video/explore.mp4",
-    "_webm": "course/en/video/explore.webm",
-    "_graphic": "course/en/video/explore.jpg",
     "_xlarge": {
       "_mp4": "course/en/video/explore-xlarge.mp4",
-      "_webm": "course/en/video/explore-xlarge.webm"
+      "_webm": "course/en/video/explore-xlarge.webm",
+      "_graphic": "course/en/images/explore-xlarge.jpg"
     },
     "_large": {
       "_mp4": "course/en/video/explore-large.mp4",
-      "_webm": "course/en/video/explore-large.webm"
+      "_webm": "course/en/video/explore-large.webm",
+      "_graphic": "course/en/images/explore-large.jpg"
     },
     "_medium": {
       "_mp4": "course/en/video/explore-medium.mp4",
-      "_webm": "course/en/video/explore-medium.webm"
+      "_webm": "course/en/video/explore-medium.webm",
+      "_graphic": "course/en/images/explore-medium.jpg"
     },
     "_small": {
       "_mp4": "course/en/video/explore-small.mp4",
-      "_webm": "course/en/video/explore-small.webm"
+      "_webm": "course/en/video/explore-small.webm",
+      "_graphic": "course/en/images/explore-small.jpg"
     },
     "_selector": "",
     "_minHeight": "",
