@@ -4,40 +4,45 @@ import device from 'core/js/device';
 export default function BackgroundVideo(props) {
   const { _backgroundVideo, _screenSize, _id, _globals } = props;
 
-  // Get the appropriate video source based on screen size
-  function getResponsiveVideoSource() {
+  // Get the appropriate video source and poster based on screen size
+  function getResponsiveMedia() {
     const screenSize = device.screenSize || _screenSize || 'large';
     const config = _backgroundVideo;
     
-    // Check for device-specific videos first, fallback to default
-    let mp4 = config._mp4 || '';
-    let webm = config._webm || '';
+    let mp4 = '';
+    let webm = '';
+    let poster = '';
     
-    // Priority order based on screen size
+    // Priority order based on screen size with intelligent fallback
     switch(screenSize) {
       case 'xlarge':
-        mp4 = config._xlarge?._mp4 || config._large?._mp4 || config._medium?._mp4 || config._mp4 || '';
-        webm = config._xlarge?._webm || config._large?._webm || config._medium?._webm || config._webm || '';
+        mp4 = config._xlarge?._mp4 || config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || '';
+        webm = config._xlarge?._webm || config._large?._webm || config._medium?._webm || config._small?._webm || '';
+        poster = config._xlarge?._graphic || config._large?._graphic || config._medium?._graphic || config._small?._graphic || '';
         break;
       case 'large':
-        mp4 = config._large?._mp4 || config._medium?._mp4 || config._mp4 || '';
-        webm = config._large?._webm || config._medium?._webm || config._webm || '';
+        mp4 = config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || config._xlarge?._mp4 || '';
+        webm = config._large?._webm || config._medium?._webm || config._small?._webm || config._xlarge?._webm || '';
+        poster = config._large?._graphic || config._medium?._graphic || config._small?._graphic || config._xlarge?._graphic || '';
         break;
       case 'medium':
-        mp4 = config._medium?._mp4 || config._small?._mp4 || config._mp4 || '';
-        webm = config._medium?._webm || config._small?._webm || config._webm || '';
+        mp4 = config._medium?._mp4 || config._small?._mp4 || config._large?._mp4 || config._xlarge?._mp4 || '';
+        webm = config._medium?._webm || config._small?._webm || config._large?._webm || config._xlarge?._webm || '';
+        poster = config._medium?._graphic || config._small?._graphic || config._large?._graphic || config._xlarge?._graphic || '';
         break;
       case 'small':
-        mp4 = config._small?._mp4 || config._medium?._mp4 || config._mp4 || '';
-        webm = config._small?._webm || config._medium?._webm || config._webm || '';
+        mp4 = config._small?._mp4 || config._medium?._mp4 || config._large?._mp4 || config._xlarge?._mp4 || '';
+        webm = config._small?._webm || config._medium?._webm || config._large?._webm || config._xlarge?._webm || '';
+        poster = config._small?._graphic || config._medium?._graphic || config._large?._graphic || config._xlarge?._graphic || '';
         break;
       default:
-        // Use default if no screen size detected
-        mp4 = config._mp4 || '';
-        webm = config._webm || '';
+        // Fallback to any available size
+        mp4 = config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || config._xlarge?._mp4 || '';
+        webm = config._large?._webm || config._medium?._webm || config._small?._webm || config._xlarge?._webm || '';
+        poster = config._large?._graphic || config._medium?._graphic || config._small?._graphic || config._xlarge?._graphic || '';
     }
     
-    return { mp4, webm };
+    return { mp4, webm, poster };
   }
 
   function UseVideo() {
@@ -45,8 +50,8 @@ export default function BackgroundVideo(props) {
     const ariaLabel = _globals?.ariaRegion || 'Background video with playback controls.';
     const playLabel = _globals?.playButton || 'Play video';
     
-    // Get responsive video sources
-    const { mp4, webm } = getResponsiveVideoSource();
+    // Get responsive video sources and poster
+    const { mp4, webm, poster } = getResponsiveMedia();
     
     // Determine which source to use (prefer mp4 if available)
     const videoSource = mp4 || webm;
@@ -55,7 +60,7 @@ export default function BackgroundVideo(props) {
     const videoProps = {
       id: `backgroundvideo-${_id}`,
       preload: "auto",
-      poster: _backgroundVideo._graphic,
+      poster: poster,
       muted: _backgroundVideo._isMuted !== false,
       playsInline: _backgroundVideo._playsinline !== false,
       'aria-label': ariaLabel,
@@ -96,13 +101,6 @@ export default function BackgroundVideo(props) {
         )}
       </div>
     );
-  }
-
-  function UseGraphic() {
-    if (_backgroundVideo._graphic) {
-      return <img src={_backgroundVideo._graphic} alt="Background image" role="presentation"/>;
-    }
-    return null;
   }
 
   // Always show video on all screen sizes
