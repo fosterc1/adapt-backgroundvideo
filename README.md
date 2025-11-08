@@ -250,9 +250,9 @@ All modern browsers with HTML5 video support.
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.7.2  
+**Version number:**  2.7.3  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
-**Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, and reduced motion support  
-**RTL support:** Yes  
+**Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, reduced motion support, and 44px minimum touch targets  
+**RTL support:** Yes - Uses CSS logical properties for proper right-to-left language support  
 **Cross-platform coverage:** Desktop (Windows, macOS, Linux), Mobile (iOS, Android), Tablets - All modern browsers (Chrome, Firefox, Safari, Edge) 

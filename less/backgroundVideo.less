@@ -16,8 +16,9 @@
     --button-focus-outline-offset: 0.125rem; // 2px
     
     position: absolute;
-    right: 0;
-    bottom: 0;
+    // Use logical properties for RTL support
+    inset-inline-end: 0;
+    inset-block-end: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
@@ -48,7 +49,8 @@
 .backgroundvideo__playpause {
     position: fixed;
     bottom: var(--button-position-bottom);
-    right: var(--button-position-right);
+    // Use logical property for RTL support
+    inset-inline-end: var(--button-position-right);
     z-index: var(--button-z-index);
     width: var(--button-size);
     height: var(--button-size);
@@ -70,6 +72,11 @@
     }
     
     &:focus {
+        outline: var(--button-focus-outline-width) solid white;
+        outline-offset: var(--button-focus-outline-offset);
+    }
+    
+    &:focus-visible {
         outline: var(--button-focus-outline-width) solid white;
         outline-offset: var(--button-focus-outline-offset);
     }
@@ -125,7 +132,7 @@
 
 @media (max-width: 32.5rem) { // 520px
     .backgroundvideo {
-        --button-size: 2.5rem; // 40px
+        --button-size: 2.75rem; // 44px - WCAG minimum touch target
         --button-position-bottom: 1rem; // 16px
         --button-position-right: 1rem; // 16px
         --button-font-size: 1rem; // 16px
