@@ -14,11 +14,46 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 >>**_isEnabled** (boolean): Enable or disable the _backgroundVideo. Default: `false`
 
->>**_mp4** (string): File name (including path) of the video file. Path should be relative to the *src* folder (e.g., *course/en/video/video.mp4*).
+>>**_mp4** (string): File name (including path) of the default/fallback MP4 video file. Path should be relative to the *src* folder (e.g., *course/en/video/video.mp4*). Used if no device-specific videos are set.
 
->>**_webm** (string): File name (including path) of the video file. Path should be relative to the *src* folder (e.g., *course/en/video/video.webm*).
+>>**_webm** (string): File name (including path) of the default/fallback WEBM video file. Path should be relative to the *src* folder (e.g., *course/en/video/video.webm*). Used if no device-specific videos are set.
 
->>**_graphic** (string): File name (including path) of the optional image to be shown while the video is downloading. Path should be relative to the *src* folder (e.g., *course/en/images/video.jpg*).
+>>**_graphic** (string): File name (including path) of the optional poster image to be shown while the video is downloading or as fallback. Path should be relative to the *src* folder (e.g., *course/en/images/video.jpg*).
+
+### Responsive Videos (Device-Specific)
+
+The extension supports different videos for different screen sizes, similar to Adapt's responsive image system:
+
+>>**_xlarge** (object): Video files for extra large devices (1440px+)
+>>>**_mp4** (string): MP4 video for extra large screens
+>>>**_webm** (string): WEBM video for extra large screens
+
+>>**_large** (object): Video files for large devices (1024px+)
+>>>**_mp4** (string): MP4 video for large screens
+>>>**_webm** (string): WEBM video for large screens
+
+>>**_medium** (object): Video files for medium devices (768px+)
+>>>**_mp4** (string): MP4 video for medium screens (tablets)
+>>>**_webm** (string): WEBM video for medium screens (tablets)
+
+>>**_small** (object): Video files for small devices (up to 767px)
+>>>**_mp4** (string): MP4 video for small screens (mobile)
+>>>**_webm** (string): WEBM video for small screens (mobile)
+
+**How it works:**
+- The extension automatically selects the appropriate video based on the current screen size
+- Falls back to the next available size if a specific size is not provided
+- Finally falls back to the default `_mp4` or `_webm` if no device-specific videos exist
+- Example: On a medium device, it tries: medium → small → default
+- Example: On an xlarge device, it tries: xlarge → large → medium → default
+
+**Benefits:**
+- Serve optimized video file sizes for each device
+- Reduce bandwidth usage on mobile devices
+- Improve page load performance
+- Better user experience across all devices
+
+### Additional Configuration
 
 >>**_selector** (string): Allows to specify a CSS selector (e.g., *.page__header*). Leave empty to apply to the entire element.
 
@@ -184,13 +219,16 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 ## Tips
 
 - **Video Format**: Provide both MP4 and WebM formats for maximum browser compatibility
+- **Responsive Videos**: Use device-specific videos (_xlarge, _large, _medium, _small) to optimize bandwidth and performance across devices
+- **Video Optimization**: Create smaller file sizes for mobile devices - users on cellular connections will appreciate the reduced data usage
+- **Fallback Strategy**: Always provide default `_mp4` and `_webm` files as fallback for devices where specific sizes aren't available
 - **Poster Image**: Always include a poster image for loading states and fallback
-- **File Size**: Optimize video files - large files impact page load performance
+- **File Size**: Optimize video files - large files impact page load performance. Consider using compression tools or lower bitrates for smaller screens
 - **Autoplay**: Consider user experience - muted autoplay is recommended
 - **Controls**: Enable `_showControls` for user control over playback
 - **Accessibility**: The extension automatically respects `prefers-reduced-motion`
 - **Mobile**: Videos play inline on mobile (no fullscreen) when `_playsinline` is enabled
-- **Testing**: Test on actual devices, especially mobile, to ensure smooth playback
+- **Testing**: Test on actual devices, especially mobile, to ensure smooth playback and verify responsive video switching
 - **Customization**: Use CSS variables for easy styling - see CUSTOMIZATION.md
 - **Loop Count**: Use `-1` for infinite loop, `0` for no loop, or positive number for specific count
 - **Positioning**: Default is `center top` - adjust via CSS if needed
@@ -211,7 +249,7 @@ All modern browsers with HTML5 video support.
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.5.0  
+**Version number:**  2.6.0  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, and reduced motion support  

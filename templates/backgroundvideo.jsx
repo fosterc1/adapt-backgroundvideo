@@ -1,12 +1,56 @@
 import React from 'react';
+import device from 'core/js/device';
 
 export default function BackgroundVideo(props) {
   const { _backgroundVideo, _screenSize, _id, _globals } = props;
+
+  // Get the appropriate video source based on screen size
+  function getResponsiveVideoSource() {
+    const screenSize = device.screenSize || _screenSize || 'large';
+    const config = _backgroundVideo;
+    
+    // Check for device-specific videos first, fallback to default
+    let mp4 = config._mp4 || '';
+    let webm = config._webm || '';
+    
+    // Priority order based on screen size
+    switch(screenSize) {
+      case 'xlarge':
+        mp4 = config._xlarge?._mp4 || config._large?._mp4 || config._medium?._mp4 || config._mp4 || '';
+        webm = config._xlarge?._webm || config._large?._webm || config._medium?._webm || config._webm || '';
+        break;
+      case 'large':
+        mp4 = config._large?._mp4 || config._medium?._mp4 || config._mp4 || '';
+        webm = config._large?._webm || config._medium?._webm || config._webm || '';
+        break;
+      case 'medium':
+        mp4 = config._medium?._mp4 || config._small?._mp4 || config._mp4 || '';
+        webm = config._medium?._webm || config._small?._webm || config._webm || '';
+        break;
+      case 'small':
+        mp4 = config._small?._mp4 || config._medium?._mp4 || config._mp4 || '';
+        webm = config._small?._webm || config._medium?._webm || config._webm || '';
+        break;
+      default:
+        // Use default if no screen size detected
+        mp4 = config._mp4 || '';
+        webm = config._webm || '';
+    }
+    
+    return { mp4, webm };
+  }
 
   function UseVideo() {
     // Use translatable aria label from globals
     const ariaLabel = _globals?.ariaRegion || 'Background video with playback controls.';
     const playLabel = _globals?.playButton || 'Play video';
+    
+    // Get responsive video sources
+    const { mp4, webm } = getResponsiveVideoSource();
+    
+    // Determine which source to use (prefer mp4 if available)
+    const videoSource = mp4 || webm;
+    const videoType = mp4 ? 'video/mp4' : 'video/webm';
     
     const videoProps = {
       id: `backgroundvideo-${_id}`,
@@ -31,11 +75,13 @@ export default function BackgroundVideo(props) {
 
     return (
       <div className="backgroundvideo__container">
-        <video {...videoProps}>
-          <source
-            src={_backgroundVideo._mp4 !== '' ? _backgroundVideo._mp4 : _backgroundVideo._webm}
-            type={_backgroundVideo._mp4 !== '' ? 'video/mp4' : 'video/webm'}
-          ></source>
+        <video {...videoProps} key={videoSource}>
+          {mp4 && (
+            <source src={mp4} type="video/mp4" />
+          )}
+          {webm && (
+            <source src={webm} type="video/webm" />
+          )}
         </video>
         {_backgroundVideo._showControls && (
           <button 

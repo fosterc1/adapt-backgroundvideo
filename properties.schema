@@ -197,6 +197,114 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
+								},
+								"_xlarge": {
+									"type": "object",
+									"required": false,
+									"title": "Extra Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for extra large devices (1440px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for extra large devices (1440px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_large": {
+									"type": "object",
+									"required": false,
+									"title": "Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for large devices (1024px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for large devices (1024px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_medium": {
+									"type": "object",
+									"required": false,
+									"title": "Medium Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for medium devices (768px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for medium devices (768px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_small": {
+									"type": "object",
+									"required": false,
+									"title": "Small Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for small devices (mobile, up to 767px)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for small devices (mobile, up to 767px)",
+											"translatable": false
+										}
+									}
 								}
 							}
 						}
@@ -362,6 +470,114 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
+								},
+								"_xlarge": {
+									"type": "object",
+									"required": false,
+									"title": "Extra Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for extra large devices (1440px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for extra large devices (1440px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_large": {
+									"type": "object",
+									"required": false,
+									"title": "Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for large devices (1024px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for large devices (1024px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_medium": {
+									"type": "object",
+									"required": false,
+									"title": "Medium Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for medium devices (768px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for medium devices (768px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_small": {
+									"type": "object",
+									"required": false,
+									"title": "Small Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for small devices (mobile, up to 767px)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for small devices (mobile, up to 767px)",
+											"translatable": false
+										}
+									}
 								}
 							}
 						}
@@ -527,6 +743,114 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
+								},
+								"_xlarge": {
+									"type": "object",
+									"required": false,
+									"title": "Extra Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for extra large devices (1440px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for extra large devices (1440px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_large": {
+									"type": "object",
+									"required": false,
+									"title": "Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for large devices (1024px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for large devices (1024px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_medium": {
+									"type": "object",
+									"required": false,
+									"title": "Medium Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for medium devices (768px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for medium devices (768px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_small": {
+									"type": "object",
+									"required": false,
+									"title": "Small Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for small devices (mobile, up to 767px)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for small devices (mobile, up to 767px)",
+											"translatable": false
+										}
+									}
 								}
 							}
 						}
@@ -692,6 +1016,114 @@
 									"inputType": "Checkbox",
 									"validators": [],
 									"help": "Rewind the video when user manually pauses it"
+								},
+								"_xlarge": {
+									"type": "object",
+									"required": false,
+									"title": "Extra Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for extra large devices (1440px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "XLarge WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for extra large devices (1440px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_large": {
+									"type": "object",
+									"required": false,
+									"title": "Large Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for large devices (1024px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Large WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for large devices (1024px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_medium": {
+									"type": "object",
+									"required": false,
+									"title": "Medium Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for medium devices (768px+)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Medium WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for medium devices (768px+)",
+											"translatable": false
+										}
+									}
+								},
+								"_small": {
+									"type": "object",
+									"required": false,
+									"title": "Small Device Video",
+									"properties": {
+										"_mp4": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small MP4",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "MP4 video for small devices (mobile, up to 767px)",
+											"translatable": false
+										},
+										"_webm": {
+											"type": "string",
+											"required": false,
+											"default": "",
+											"title": "Small WEBM",
+											"inputType": "Asset:video",
+											"validators": [],
+											"help": "WEBM video for small devices (mobile, up to 767px)",
+											"translatable": false
+										}
+									}
 								}
 							}
 						}
