@@ -13,33 +13,34 @@ export default function BackgroundVideo(props) {
     let webm = '';
     let poster = '';
     
-    // Priority order based on screen size with intelligent fallback
+    // Only use exact match for screen size - no fallback to other sizes
+    // This ensures videos only play on their intended screen size
     switch(screenSize) {
       case 'xlarge':
-        mp4 = config._xlarge?._mp4 || config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || '';
-        webm = config._xlarge?._webm || config._large?._webm || config._medium?._webm || config._small?._webm || '';
-        poster = config._xlarge?._graphic || config._large?._graphic || config._medium?._graphic || config._small?._graphic || '';
+        mp4 = config._xlarge?._mp4 || '';
+        webm = config._xlarge?._webm || '';
+        poster = config._xlarge?._graphic || '';
         break;
       case 'large':
-        mp4 = config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || config._xlarge?._mp4 || '';
-        webm = config._large?._webm || config._medium?._webm || config._small?._webm || config._xlarge?._webm || '';
-        poster = config._large?._graphic || config._medium?._graphic || config._small?._graphic || config._xlarge?._graphic || '';
+        mp4 = config._large?._mp4 || '';
+        webm = config._large?._webm || '';
+        poster = config._large?._graphic || '';
         break;
       case 'medium':
-        mp4 = config._medium?._mp4 || config._small?._mp4 || config._large?._mp4 || config._xlarge?._mp4 || '';
-        webm = config._medium?._webm || config._small?._webm || config._large?._webm || config._xlarge?._webm || '';
-        poster = config._medium?._graphic || config._small?._graphic || config._large?._graphic || config._xlarge?._graphic || '';
+        mp4 = config._medium?._mp4 || '';
+        webm = config._medium?._webm || '';
+        poster = config._medium?._graphic || '';
         break;
       case 'small':
-        mp4 = config._small?._mp4 || config._medium?._mp4 || config._large?._mp4 || config._xlarge?._mp4 || '';
-        webm = config._small?._webm || config._medium?._webm || config._large?._webm || config._xlarge?._webm || '';
-        poster = config._small?._graphic || config._medium?._graphic || config._large?._graphic || config._xlarge?._graphic || '';
+        mp4 = config._small?._mp4 || '';
+        webm = config._small?._webm || '';
+        poster = config._small?._graphic || '';
         break;
       default:
-        // Fallback to any available size
-        mp4 = config._large?._mp4 || config._medium?._mp4 || config._small?._mp4 || config._xlarge?._mp4 || '';
-        webm = config._large?._webm || config._medium?._webm || config._small?._webm || config._xlarge?._webm || '';
-        poster = config._large?._graphic || config._medium?._graphic || config._small?._graphic || config._xlarge?._graphic || '';
+        // Default to large if screen size not detected
+        mp4 = config._large?._mp4 || '';
+        webm = config._large?._webm || '';
+        poster = config._large?._graphic || '';
     }
     
     return { mp4, webm, poster };

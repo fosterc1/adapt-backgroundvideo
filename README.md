@@ -40,9 +40,9 @@ The extension requires you to specify videos for different screen sizes. At leas
 
 **How it works:**
 - The extension automatically selects the appropriate video and poster based on the current screen size
-- Falls back to other available sizes if a specific size is not provided
-- Example: On a medium device, it tries: medium → small → large → xlarge
-- Example: On an xlarge device, it tries: xlarge → large → medium → small
+- **No fallback**: Videos only play on their exact screen size match
+- If a screen size doesn't have a video configured, no video will play (only poster shows if available)
+- Example: If only `_xlarge` is configured, the video only plays on xlarge screens
 - Each size can have its own optimized poster image
 
 **Benefits:**
@@ -219,7 +219,7 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 
 - **Required Sizes**: You must configure at least one device size (_xlarge, _large, _medium, or _small)
 - **Video Format**: Provide both MP4 and WebM formats for maximum browser compatibility
-- **Responsive Strategy**: Configure all four sizes for best experience, or provide only the sizes you need (fallback will handle the rest)
+- **Responsive Strategy**: Configure all four sizes for best experience across all devices. Videos only play on their exact screen size match (no fallback)
 - **Video Optimization**: Create smaller file sizes for mobile devices - users on cellular connections will appreciate the reduced data usage
 - **Poster Images**: Include device-specific poster images for better loading experience on each device type
 - **File Size**: Optimize video files - large files impact page load performance. Consider using compression tools or lower bitrates for smaller screens
@@ -249,7 +249,7 @@ All modern browsers with HTML5 video support.
 The background video extension works on all screen sizes including mobile devices.
 
 ----------------------------
-**Version number:**  2.7.0  
+**Version number:**  2.7.1  
 **Framework versions:**  5.14.0+     
 **Author / maintainer:**  [fosterc1](https://github.com/fosterc1/)    
 **Accessibility support:** Yes - WCAG 2.1 AA compliant with full screen reader support, keyboard navigation (Space/Enter keys), dynamic ARIA labels, and reduced motion support  
