@@ -1,4 +1,20 @@
-.backgroundvideo{   
+.backgroundvideo {
+    // CSS Custom Properties for easy customization
+    --button-size: 3.125rem; // 50px
+    --button-position-bottom: 1.25rem; // 20px
+    --button-position-right: 1.25rem; // 20px
+    --button-z-index: 9999;
+    --button-bg-color: rgba(0, 0, 0, 0.7);
+    --button-bg-color-hover: rgba(0, 0, 0, 0.9);
+    --button-border-width: 0.125rem; // 2px
+    --button-border-color: rgba(255, 255, 255, 0.8);
+    --button-text-color: white;
+    --button-font-size: 1.25rem; // 20px
+    --button-hover-scale: 1.1;
+    --button-transition: all 0.3s ease;
+    --button-focus-outline-width: 0.125rem; // 2px
+    --button-focus-outline-offset: 0.125rem; // 2px
+    
     position: absolute;
     right: 0;
     bottom: 0;
@@ -23,39 +39,39 @@
     }
 }
 
-.has-backgroundvideo{
+.has-backgroundvideo {
     position: relative;
 }
 
 // Custom play/pause button
-// Customize position, colors, and size as needed
+// All styling can be customized via CSS variables above
 .backgroundvideo__playpause {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    width: 50px;
-    height: 50px;
+    bottom: var(--button-position-bottom);
+    right: var(--button-position-right);
+    z-index: var(--button-z-index);
+    width: var(--button-size);
+    height: var(--button-size);
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    color: white;
-    font-size: 20px;
+    background-color: var(--button-bg-color);
+    border: var(--button-border-width) solid var(--button-border-color);
+    color: var(--button-text-color);
+    font-size: var(--button-font-size);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: var(--button-transition);
     pointer-events: auto;
     
     &:hover {
-        background-color: rgba(0, 0, 0, 0.9);
-        transform: scale(1.1);
+        background-color: var(--button-bg-color-hover);
+        transform: scale(var(--button-hover-scale));
     }
     
     &:focus {
-        outline: 2px solid white;
-        outline-offset: 2px;
+        outline: var(--button-focus-outline-width) solid white;
+        outline-offset: var(--button-focus-outline-offset);
     }
 }
 
@@ -96,6 +112,23 @@
     // Show fallback image
     video {
         display: none;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 56.25rem) { // 900px
+    .backgroundvideo {
+        --button-size: 2.75rem; // 44px
+        --button-font-size: 1.125rem; // 18px
+    }
+}
+
+@media (max-width: 32.5rem) { // 520px
+    .backgroundvideo {
+        --button-size: 2.5rem; // 40px
+        --button-position-bottom: 1rem; // 16px
+        --button-position-right: 1rem; // 16px
+        --button-font-size: 1rem; // 16px
     }
 }
 

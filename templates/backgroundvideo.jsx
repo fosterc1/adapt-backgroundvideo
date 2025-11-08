@@ -1,16 +1,20 @@
 import React from 'react';
 
 export default function BackgroundVideo(props) {
-  const { _backgroundVideo, _screenSize, _id } = props;
+  const { _backgroundVideo, _screenSize, _id, _globals } = props;
 
   function UseVideo() {
+    // Use translatable aria label from globals
+    const ariaLabel = _globals?.ariaRegion || 'Background video with playback controls.';
+    const playLabel = _globals?.playButton || 'Play video';
+    
     const videoProps = {
       id: `backgroundvideo-${_id}`,
       preload: "auto",
       poster: _backgroundVideo._graphic,
       muted: _backgroundVideo._isMuted !== false,
       playsInline: _backgroundVideo._playsinline !== false,
-      'aria-label': 'Background video',
+      'aria-label': ariaLabel,
       role: 'img',
       'aria-hidden': 'true'
     };
@@ -36,7 +40,7 @@ export default function BackgroundVideo(props) {
         {_backgroundVideo._showControls && (
           <button 
             className="backgroundvideo__playpause" 
-            aria-label="Play video"
+            aria-label={playLabel}
             aria-pressed="false"
             type="button"
           >
