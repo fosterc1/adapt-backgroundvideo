@@ -118,6 +118,26 @@ export default function BackgroundVideo(props) {
     );
   }
 
-  // Always show video on all screen sizes
+  // Get video sources to check if we should render
+  const { mp4, webm, poster } = getResponsiveMedia();
+  
+  // Only render video if we have at least one source for this screen size
+  if (!mp4 && !webm) {
+    console.log('BackgroundVideo: No video source for current screen size, rendering fallback');
+    
+    // Render fallback poster/graphic if available
+    if (poster) {
+      return (
+        <div className="backgroundvideo__container backgroundvideo__fallback">
+          <img src={poster} alt="" className="backgroundvideo__poster" aria-hidden="true" />
+        </div>
+      );
+    }
+    
+    // No video and no poster - render nothing (empty div to maintain structure)
+    return <div className="backgroundvideo__container backgroundvideo__empty" />;
+  }
+  
+  // Render video if source is available
   return <UseVideo />;
 }

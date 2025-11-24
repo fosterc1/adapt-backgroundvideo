@@ -72,8 +72,20 @@ class BackgroundVideoView extends Backbone.View {
     const newSource = this.getVideoSourceForScreenSize(screenSize);
     const currentSource = this.video.currentSrc;
     
+    // Check if we need to hide the video (no source for this screen size)
+    if (!newSource || newSource === '') {
+      console.log('BackgroundVideoView.onDeviceChanged - no video for screen size, hiding video');
+      
+      // Clean up and hide video
+      this.cleanupVideo();
+      
+      // Re-render without video (will show fallback/poster or nothing)
+      this.render(screenSize);
+      return;
+    }
+    
     // Only reload video if source has actually changed
-    if (newSource && newSource !== currentSource && !currentSource.includes(newSource)) {
+    if (newSource !== currentSource && !currentSource.includes(newSource)) {
       console.log('BackgroundVideoView.onDeviceChanged - source changed, updating video');
       
       // Clean up existing video properly before reload
