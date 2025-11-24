@@ -2,7 +2,7 @@
 
 [![Adapt Framework Version](https://img.shields.io/badge/adapt%20framework-v5.14.0+-blue.svg)](https://github.com/adaptlearning/adapt_framework)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-2.7.11-orange.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
+[![Version](https://img.shields.io/badge/version-2.7.13-orange.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
 [![Accessibility](https://img.shields.io/badge/accessibility-WCAG%202.1%20AA-brightgreen.svg)](#accessibility-features)
 [![RTL Support](https://img.shields.io/badge/RTL-supported-success.svg)](#accessibility-features)
 [![Maintained](https://img.shields.io/badge/maintained-yes-success.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
@@ -44,6 +44,7 @@
 - **Device-Specific Optimization**: Serve optimized videos per screen size (XL, L, M, S)
 - **Smart Source Switching**: Automatically updates videos on orientation change
 - **Crash Prevention**: Fixed browser crashes during orientation changes (v2.7.11)
+- **Video Hiding Fix**: Videos now properly hide when rotating to screen sizes without configured sources (v2.7.12)
 - **Memory Management**: Proper cleanup prevents memory leaks
 - **Playback State Preservation**: Maintains video state across device changes
 
@@ -386,7 +387,7 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 - ✅ Check controls work on touch devices
 
 ### Troubleshooting
-- **Browser Crashes**: Ensure you're using v2.7.11+ (orientation fix)
+- **Browser Crashes**: Ensure you're using v2.7.13+ (orientation fix)
 - **Video Not Playing**: Check browser console for errors
 - **Wrong Video Size**: Verify breakpoint configuration in config.json
 - **Performance Issues**: Reduce video file sizes and bitrates
@@ -404,7 +405,7 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 - 📐 **Positioning**: Default is `center top` - adjust via CSS if needed
 
 ### Development Tips
-- 🔧 **Version Control**: Use v2.7.11+ for stable orientation handling
+- 🔧 **Version Control**: Use v2.7.13+ for stable orientation handling
 - 📊 **Monitoring**: Watch browser DevTools for memory usage
 - 🧪 **Testing**: Always test on real devices, not just simulators
 - 📝 **Documentation**: Keep video source URLs organized and documented
@@ -459,6 +460,22 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 ---
 
 ## 📝 Changelog
+
+### v2.7.13 (2025-11-24) - Version Bump
+- ✅ **Version Update**: Bumped to v2.7.13 for deployment consistency
+- ✅ **No Functional Changes**: All v2.7.12 functionality included
+
+### v2.7.12 (2025-11-24) - 🐛 CRITICAL: Video Hiding Fix
+- 🔴 **CRITICAL FIX**: Videos now properly hide when rotating to screen sizes without configured sources
+- ✅ **Orientation Handling**: Fixed video persistence bug on iPhone 14 Pro
+- ✅ **Conditional Rendering**: Template now only renders video when sources exist
+- ✅ **Fallback Support**: Shows poster image or empty container when no video configured
+- 🔧 **Technical**: Enhanced `onDeviceChanged()` with empty source detection
+- 🧪 **Testing**: Verified on iPhone 14 Pro portrait/landscape transitions
+
+**Behavior Fixed**:
+- Portrait (no video) → Landscape (with video): ✅ Video appears
+- Landscape (with video) → Portrait (no video): ✅ Video now correctly disappears (FIXED!)
 
 ### v2.7.11 (2025-11-24) - 🚨 CRITICAL: Orientation Change Crash Fix
 - 🔴 **CRITICAL FIX**: Fixed browser crashes during orientation changes on touch devices
