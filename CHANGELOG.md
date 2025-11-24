@@ -2,6 +2,12 @@
 
 All notable changes to the Background Video extension will be documented in this file.
 
+## [2.7.13] - 2025-11-24
+
+### Changed
+- Version bump for consistency with deployment
+- No functional changes from v2.7.12
+
 ## [2.7.12] - 2025-11-24
 
 ### Fixed
