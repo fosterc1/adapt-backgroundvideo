@@ -15,7 +15,12 @@ export default function BackgroundVideo(props) {
       _screenSize,
       'device.screenSize': device.screenSize,
       'used': screenSize,
-      'viewport': window.innerWidth + 'px'
+      'viewport': window.innerWidth + 'px',
+      'hasXlarge': !!config._xlarge?._mp4,
+      'hasLarge': !!config._large?._mp4,
+      'hasMedium': !!config._medium?._mp4,
+      'hasSmall': !!config._small?._mp4,
+      'selectedVideo': mp4 || webm || 'NONE'
     });
     
     let mp4 = '';
