@@ -1,6 +1,6 @@
 # adapt-backgroundVideo
 
-[![Version](https://img.shields.io/badge/version-2.7.4-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![Version](https://img.shields.io/badge/version-2.7.5-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 [![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
@@ -9,7 +9,7 @@
 
 ## ✨ Features
 
-- 📱 **Device-Specific Videos** - Serve optimized videos per screen size (xlarge, large, medium, small)
+- 📱 **Device-Specific Videos** - Serve optimized videos per screen size (Extra Large, Large, Medium, Small)
 - ♿ **WCAG 2.1 AA/AAA Compliant** - Full accessibility with screen readers, keyboard navigation, and reduced motion
 - 🌍 **RTL Support** - Complete right-to-left language support using CSS logical properties
 - 🎨 **Fully Customizable** - 16 CSS custom properties for complete styling control
@@ -38,31 +38,36 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 The extension requires you to specify videos for different screen sizes. At least one size must be configured:
 
->>**_xlarge** (object): Video files for extra large devices (1440px+)
->>>**_mp4** (string): MP4 video for extra large screens
->>>**_webm** (string): WEBM video for extra large screens (optional)
->>>**_graphic** (string): Poster image for extra large screens (optional)
+>>**_xlarge** (object): Video files for Extra Large devices (1280px+)
+>>>**_mp4** (string): MP4 video for Extra Large screens
+>>>**_webm** (string): WEBM video for Extra Large screens (optional)
+>>>**_graphic** (string): Poster image for Extra Large screens (optional)
 
->>**_large** (object): Video files for large devices (1024px+)
->>>**_mp4** (string): MP4 video for large screens
->>>**_webm** (string): WEBM video for large screens (optional)
->>>**_graphic** (string): Poster image for large screens (optional)
+>>**_large** (object): Video files for Large devices (960-1279px)
+>>>**_mp4** (string): MP4 video for Large screens
+>>>**_webm** (string): WEBM video for Large screens (optional)
+>>>**_graphic** (string): Poster image for Large screens (optional)
 
->>**_medium** (object): Video files for medium devices (768px+)
->>>**_mp4** (string): MP4 video for medium screens (tablets)
->>>**_webm** (string): WEBM video for medium screens (optional)
->>>**_graphic** (string): Poster image for medium screens (optional)
+>>**_medium** (object): Video files for Medium devices (720-959px)
+>>>**_mp4** (string): MP4 video for Medium screens (tablets)
+>>>**_webm** (string): WEBM video for Medium screens (optional)
+>>>**_graphic** (string): Poster image for Medium screens (optional)
 
->>**_small** (object): Video files for small devices (up to 767px)
->>>**_mp4** (string): MP4 video for small screens (mobile)
->>>**_webm** (string): WEBM video for small screens (optional)
->>>**_graphic** (string): Poster image for small screens (optional)
+>>**_small** (object): Video files for Small devices (up to 719px)
+>>>**_mp4** (string): MP4 video for Small screens (mobile)
+>>>**_webm** (string): WEBM video for Small screens (optional)
+>>>**_graphic** (string): Poster image for Small screens (optional)
 
 **How it works:**
 - The extension automatically selects the appropriate video and poster based on the current screen size
+- Uses Adapt's standard breakpoints from Course Configuration settings:
+  - **Small**: up to 719px
+  - **Medium**: 720-959px
+  - **Large**: 960-1279px
+  - **Extra Large**: 1280px+
 - **No fallback**: Videos only play on their exact screen size match
 - If a screen size doesn't have a video configured, no video will play (only poster shows if available)
-- Example: If only `_xlarge` is configured, the video only plays on xlarge screens
+- Example: If only `_xlarge` is configured, the video only plays on Extra Large screens (1280px+)
 - Each size can have its own optimized poster image
 
 **Benefits:**
@@ -273,6 +278,18 @@ The background video extension works on all screen sizes including mobile device
 
 ## 📝 Changelog
 
+### v2.7.5 (2025-01-08) - Breakpoint Correction (IMPORTANT)
+- 🔴 **Critical Fix** - Corrected breakpoints to match Adapt Framework standards
+- ✅ **Small**: up to 719px (was incorrectly documented as 767px)
+- ✅ **Medium**: 720-959px (was incorrectly documented as 768px+)
+- ✅ **Large**: 960-1279px (was incorrectly documented as 1024px+)
+- ✅ **Extra Large**: 1280px+ (was incorrectly documented as 1440px+)
+- Updated all documentation and schema descriptions to match Adapt Course Configuration
+- Note: Template code was already using correct Adapt breakpoints via device.screenSize
+
+### v2.7.4 (2025-01-08) - Documentation Improvements
+- ✅ Professional badges and improved structure
+
 ### v2.7.3 (2025-01-08) - RTL and Mobile Accessibility
 - ✅ **Full RTL Support** - CSS logical properties for right-to-left languages
 - ✅ **WCAG 2.1 AAA** - 44px minimum touch targets on mobile
@@ -325,7 +342,7 @@ This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICEN
 **RTL support:** Yes - CSS logical properties for Arabic, Hebrew, Persian, Urdu, etc.<br>
 **Cross-platform coverage:** Chrome 60+, Firefox 55+, Safari 12+, Edge 79+, iOS Safari 12+, Chrome Mobile (Android)<br>
 **Adapt Framework:** v5.14.0+<br>
-**Version:** 2.7.4
+**Version:** 2.7.5
 
 ---
 
