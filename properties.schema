@@ -305,7 +305,7 @@
                 "_showControls": {
                   "type": "boolean",
                   "required": false,
-                  "default": true,
+                  "default": false,
                   "title": "Show Controls",
                   "inputType": "Checkbox",
                   "validators": [],
@@ -592,7 +592,7 @@
                 "_showControls": {
                   "type": "boolean",
                   "required": false,
-                  "default": true,
+                  "default": false,
                   "title": "Show Controls",
                   "inputType": "Checkbox",
                   "validators": [],
@@ -879,7 +879,7 @@
                 "_showControls": {
                   "type": "boolean",
                   "required": false,
-                  "default": true,
+                  "default": false,
                   "title": "Show Controls",
                   "inputType": "Checkbox",
                   "validators": [],
@@ -1166,7 +1166,7 @@
                 "_showControls": {
                   "type": "boolean",
                   "required": false,
-                  "default": true,
+                  "default": false,
                   "title": "Show Controls",
                   "inputType": "Checkbox",
                   "validators": [],
