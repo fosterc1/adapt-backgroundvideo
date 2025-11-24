@@ -24,6 +24,7 @@ class BackgroundVideoView extends Backbone.View {
     this.isLoopsComplete = false;
     this.videoListenersAdded = false;
     this.checkReducedMotion();
+    console.log('BackgroundVideoView.initialize - device.screenSize:', device.screenSize, 'viewport:', window.innerWidth + 'px');
     this.render(device.screenSize);
     this.setUpListeners();
   }
@@ -230,6 +231,7 @@ class BackgroundVideoView extends Backbone.View {
   }
 
   render(screenSize) {
+    console.log('BackgroundVideoView.render called with screenSize:', screenSize, 'viewport:', window.innerWidth + 'px');
     this.model.set('_screenSize', screenSize);
     const props = { ...this.model.toJSON() };
     const Template = templates[this.constructor.template.replace('.jsx', '')];
