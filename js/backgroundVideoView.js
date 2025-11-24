@@ -18,7 +18,7 @@ class BackgroundVideoView extends Backbone.View {
   }
 
   initialize() {
-    _.bindAll(this, 'render', 'onScreenChange', 'onVideoError', 'onVideoLoadedData');
+    _.bindAll(this, 'render', 'onScreenChange', 'onVideoError', 'onVideoLoadedData', 'onDeviceChanged', 'cleanupVideo');
     this.hasUserPaused = false;
     this.config = this.model.get('_backgroundVideo');
     this.isLoopsComplete = false;
@@ -39,13 +39,112 @@ class BackgroundVideoView extends Backbone.View {
   }
 
   setUpListeners() {
-    document.addEventListener('visibilitychange', () => {
+    // Store visibility handler so we can clean it up later
+    this.visibilityHandler = () => {
       if (document.visibilityState !== 'visible') {
         this.onOffScreen();
       }
-    });
+    };
+    document.addEventListener('visibilitychange', this.visibilityHandler);
 
-    this.listenTo(Adapt, 'device:changed', this.render);
+    // Instead of re-rendering on device:changed, just update video sources
+    this.listenTo(Adapt, 'device:changed', this.onDeviceChanged);
+  }
+
+  onDeviceChanged(screenSize) {
+    console.log('BackgroundVideoView.onDeviceChanged - screenSize:', screenSize, 'viewport:', window.innerWidth + 'px');
+    
+    // Don't re-render if we don't have a video yet
+    if (!this.video) {
+      console.log('BackgroundVideoView.onDeviceChanged - no video element, skipping');
+      return;
+    }
+    
+    // Store current playback state before updating
+    const wasPlaying = !this.video.paused;
+    const currentTime = this.video.currentTime;
+    const wasMuted = this.video.muted;
+    
+    // Update model with new screen size
+    this.model.set('_screenSize', screenSize);
+    
+    // Get new video source for current screen size
+    const newSource = this.getVideoSourceForScreenSize(screenSize);
+    const currentSource = this.video.currentSrc;
+    
+    // Only reload video if source has actually changed
+    if (newSource && newSource !== currentSource && !currentSource.includes(newSource)) {
+      console.log('BackgroundVideoView.onDeviceChanged - source changed, updating video');
+      
+      // Clean up existing video properly before reload
+      this.cleanupVideo();
+      
+      // Re-render with new source
+      this.render(screenSize);
+      
+      // Restore playback state after a brief delay
+      setTimeout(() => {
+        if (this.video) {
+          this.video.muted = wasMuted;
+          this.video.currentTime = Math.min(currentTime, this.video.duration || 0);
+          if (wasPlaying && !this.hasUserPaused) {
+            this.play();
+          }
+        }
+      }, 100);
+    } else {
+      console.log('BackgroundVideoView.onDeviceChanged - source unchanged, no reload needed');
+    }
+  }
+
+  getVideoSourceForScreenSize(screenSize) {
+    const config = this.config;
+    let source = '';
+    
+    switch(screenSize) {
+      case 'xlarge':
+        source = config._xlarge?._mp4 || config._xlarge?._webm || '';
+        break;
+      case 'large':
+        source = config._large?._mp4 || config._large?._webm || '';
+        break;
+      case 'medium':
+        source = config._medium?._mp4 || config._medium?._webm || '';
+        break;
+      case 'small':
+        source = config._small?._mp4 || config._small?._webm || '';
+        break;
+      default:
+        source = config._large?._mp4 || config._large?._webm || '';
+    }
+    
+    return source;
+  }
+
+  cleanupVideo() {
+    if (!this.video) return;
+    
+    console.log('BackgroundVideoView.cleanupVideo - cleaning up video element');
+    
+    // Pause and remove all event listeners
+    this.video.pause();
+    
+    if (this.videoListenersAdded) {
+      this.video.removeEventListener('ended', this.onVideoEnded);
+      this.video.removeEventListener('play', this.updateButtonState);
+      this.video.removeEventListener('pause', this.updateButtonState);
+      this.video.removeEventListener('playing', this.updateButtonState);
+      this.video.removeEventListener('error', this.onVideoError);
+      this.video.removeEventListener('loadeddata', this.onVideoLoadedData);
+      this.videoListenersAdded = false;
+    }
+    
+    // Clear video sources to free memory
+    this.video.src = '';
+    this.video.load();
+    
+    // Clear reference
+    this.video = null;
   }
 
   setupVideoListeners() {
@@ -256,14 +355,14 @@ class BackgroundVideoView extends Backbone.View {
   }
 
   remove() {
-    // Clean up event listeners when view is removed
-    if (this.video && this.videoListenersAdded) {
-      this.video.removeEventListener('ended', this.onVideoEnded);
-      this.video.removeEventListener('play', this.updateButtonState);
-      this.video.removeEventListener('pause', this.updateButtonState);
-      this.video.removeEventListener('playing', this.updateButtonState);
-      this.video.removeEventListener('error', this.onVideoError);
-      this.video.removeEventListener('loadeddata', this.onVideoLoadedData);
+    console.log('BackgroundVideoView.remove - cleaning up');
+    
+    // Clean up video properly
+    this.cleanupVideo();
+    
+    // Clean up visibility listener
+    if (this.visibilityHandler) {
+      document.removeEventListener('visibilitychange', this.visibilityHandler);
     }
     
     Backbone.View.prototype.remove.call(this);
