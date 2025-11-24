@@ -2,7 +2,7 @@
 
 [![Adapt Framework Version](https://img.shields.io/badge/adapt%20framework-v5.14.0+-blue.svg)](https://github.com/adaptlearning/adapt_framework)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-2.7.13-orange.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
+[![Version](https://img.shields.io/badge/version-2.7.14-orange.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
 [![Accessibility](https://img.shields.io/badge/accessibility-WCAG%202.1%20AA-brightgreen.svg)](#accessibility-features)
 [![RTL Support](https://img.shields.io/badge/RTL-supported-success.svg)](#accessibility-features)
 [![Maintained](https://img.shields.io/badge/maintained-yes-success.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
@@ -387,7 +387,7 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 - ✅ Check controls work on touch devices
 
 ### Troubleshooting
-- **Browser Crashes**: Ensure you're using v2.7.13+ (orientation fix)
+- **Browser Crashes**: Ensure you're using v2.7.14+ (orientation fix)
 - **Video Not Playing**: Check browser console for errors
 - **Wrong Video Size**: Verify breakpoint configuration in config.json
 - **Performance Issues**: Reduce video file sizes and bitrates
@@ -405,7 +405,7 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 - 📐 **Positioning**: Default is `center top` - adjust via CSS if needed
 
 ### Development Tips
-- 🔧 **Version Control**: Use v2.7.13+ for stable orientation handling
+- 🔧 **Version Control**: Use v2.7.14+ for stable orientation handling
 - 📊 **Monitoring**: Watch browser DevTools for memory usage
 - 🧪 **Testing**: Always test on real devices, not just simulators
 - 📝 **Documentation**: Keep video source URLs organized and documented
@@ -460,6 +460,17 @@ These can be translated through the Adapt Authoring Tool or by updating the glob
 ---
 
 ## 📝 Changelog
+
+### v2.7.14 (2025-11-24) - 🐛 CRITICAL: Video Appearing Fix
+- 🔴 **CRITICAL FIX**: Fixed video not appearing when rotating from portrait (no video) to landscape (with video)
+- ✅ **Orientation Handling**: Corrected early return logic from v2.7.12 that prevented video rendering
+- ✅ **State Transitions**: Now properly handles both no-video → video and video → no-video transitions
+- 🔧 **Technical**: Reorganized `onDeviceChanged()` to check source availability before early return
+- 🧪 **Testing**: Verified on iPhone 14 Pro with multiple orientation changes
+
+**Complete Behavior**:
+- Portrait (no video) → Landscape (with video): ✅ Video appears (FIXED!)
+- Landscape (with video) → Portrait (no video): ✅ Video disappears (still working)
 
 ### v2.7.13 (2025-11-24) - Version Bump
 - ✅ **Version Update**: Bumped to v2.7.13 for deployment consistency
@@ -577,7 +588,7 @@ This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICEN
 | **License** | GPL-3.0 |
 | **Repository** | [GitHub](https://github.com/fosterc1/adapt-backgroundvideo) |
 | **Issues** | [Report Issues](https://github.com/fosterc1/adapt-backgroundvideo/issues) |
-| **Latest Release** | [v2.7.13 - Video Hiding Fix](https://github.com/fosterc1/adapt-backgroundvideo/releases/tag/v2.7.13) |
+| **Latest Release** | [v2.7.14 - Orientation Fix](https://github.com/fosterc1/adapt-backgroundvideo/releases/tag/v2.7.13) |
 
 ### Accessibility Support
 ✅ **WCAG 2.1 AA/AAA Compliant**  
