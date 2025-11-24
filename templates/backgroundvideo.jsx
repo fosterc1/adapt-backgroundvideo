@@ -6,8 +6,17 @@ export default function BackgroundVideo(props) {
 
   // Get the appropriate video source and poster based on screen size
   function getResponsiveMedia() {
-    const screenSize = device.screenSize || _screenSize || 'large';
+    // Prioritize _screenSize from props (passed via render), then device.screenSize
+    const screenSize = _screenSize || device.screenSize || 'large';
     const config = _backgroundVideo;
+    
+    // Debug logging to help troubleshoot
+    console.log('BackgroundVideo Debug:', {
+      _screenSize,
+      'device.screenSize': device.screenSize,
+      'used': screenSize,
+      'viewport': window.innerWidth + 'px'
+    });
     
     let mp4 = '';
     let webm = '';
