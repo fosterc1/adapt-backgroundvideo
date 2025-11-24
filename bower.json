@@ -1,6 +1,6 @@
 {
   "name": "adapt-backgroundVideo",
-  "version": "2.7.13",
+  "version": "2.7.14",
   "framework": ">=5.14.0",
   "description": "An extension to add videos to the background of an element (menu, page, article, block)",
   "repository": {

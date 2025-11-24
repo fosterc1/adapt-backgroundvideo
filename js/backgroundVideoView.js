@@ -54,9 +54,23 @@ class BackgroundVideoView extends Backbone.View {
   onDeviceChanged(screenSize) {
     console.log('BackgroundVideoView.onDeviceChanged - screenSize:', screenSize, 'viewport:', window.innerWidth + 'px');
     
-    // Don't re-render if we don't have a video yet
+    // Update model with new screen size
+    this.model.set('_screenSize', screenSize);
+    
+    // Get new video source for current screen size
+    const newSource = this.getVideoSourceForScreenSize(screenSize);
+    
+    // Handle case where no video exists yet (initial render or coming from no-video state)
     if (!this.video) {
-      console.log('BackgroundVideoView.onDeviceChanged - no video element, skipping');
+      console.log('BackgroundVideoView.onDeviceChanged - no existing video element');
+      
+      // Check if we should render a video now
+      if (newSource && newSource !== '') {
+        console.log('BackgroundVideoView.onDeviceChanged - rendering video for first time');
+        this.render(screenSize);
+      } else {
+        console.log('BackgroundVideoView.onDeviceChanged - no video source, staying in no-video state');
+      }
       return;
     }
     
@@ -64,12 +78,6 @@ class BackgroundVideoView extends Backbone.View {
     const wasPlaying = !this.video.paused;
     const currentTime = this.video.currentTime;
     const wasMuted = this.video.muted;
-    
-    // Update model with new screen size
-    this.model.set('_screenSize', screenSize);
-    
-    // Get new video source for current screen size
-    const newSource = this.getVideoSourceForScreenSize(screenSize);
     const currentSource = this.video.currentSrc;
     
     // Check if we need to hide the video (no source for this screen size)
