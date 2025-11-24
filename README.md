@@ -1,6 +1,6 @@
 # adapt-backgroundVideo
 
-[![Version](https://img.shields.io/badge/version-2.7.5-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![Version](https://img.shields.io/badge/version-2.7.6-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 [![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
@@ -60,11 +60,13 @@ The extension requires you to specify videos for different screen sizes. At leas
 
 **How it works:**
 - The extension automatically selects the appropriate video and poster based on the current screen size
-- Uses Adapt's standard breakpoints from Course Configuration settings:
-  - **Small**: up to 719px
-  - **Medium**: 720-959px
-  - **Large**: 960-1279px
-  - **Extra Large**: 1280px+
+- **Dynamic Breakpoints**: Uses Adapt's `device.screenSize` from `config.json` Course Configuration:
+  - **Small**: up to 719px (default, configurable)
+  - **Medium**: 720-959px (default, configurable)
+  - **Large**: 960-1279px (default, configurable)
+  - **Extra Large**: 1280px+ (default, configurable)
+- **Automatic Updates**: When viewport is resized and crosses a breakpoint, the video automatically switches
+- **Respects Custom Breakpoints**: If course author changes breakpoints in `config.json`, extension uses those values
 - **No fallback**: Videos only play on their exact screen size match
 - If a screen size doesn't have a video configured, no video will play (only poster shows if available)
 - Example: If only `_xlarge` is configured, the video only plays on Extra Large screens (1280px+)
@@ -76,6 +78,30 @@ The extension requires you to specify videos for different screen sizes. At leas
 - Reduce bandwidth usage on mobile devices (smaller video files)
 - Improve page load performance across all devices
 - Better user experience with appropriately sized media
+
+**Dynamic Behavior:**
+- ✅ **Responsive**: Automatically switches videos when viewport is resized
+- ✅ **Configurable**: Reads breakpoint values from `config.json` Course Configuration
+- ✅ **Custom Breakpoints**: Supports custom breakpoint values set by course authors
+- ✅ **Real-time Updates**: Listens to Adapt's `device:changed` event for instant updates
+- ✅ **Orientation Changes**: Responds to device orientation changes (portrait/landscape)
+
+**Example: Custom Breakpoints**  
+If course author sets custom breakpoints in `config.json`:
+```json
+{
+  "screenSize": {
+    "small": 600,
+    "medium": 900,
+    "large": 1200
+  }
+}
+```
+The extension will automatically use:
+- Small: up to 600px
+- Medium: 601-900px
+- Large: 901-1200px
+- Extra Large: 1201px+
 
 ### Additional Configuration
 
@@ -277,6 +303,12 @@ The background video extension works on all screen sizes including mobile device
 ---
 
 ## 📝 Changelog
+
+### v2.7.6 (2025-01-08) - Dynamic Breakpoint Documentation
+- ✅ **Clarified**: Extension IS dynamic and responds to config.json breakpoints
+- ✅ **Added**: Dynamic Behavior section explaining real-time updates
+- ✅ **Added**: Custom breakpoint example showing flexibility
+- ✅ **Confirmed**: Uses Adapt's device:changed event for automatic video switching
 
 ### v2.7.5 (2025-01-08) - Breakpoint Correction (IMPORTANT)
 - 🔴 **Critical Fix** - Corrected breakpoints to match Adapt Framework standards
