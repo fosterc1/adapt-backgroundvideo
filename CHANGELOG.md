@@ -2,6 +2,31 @@
 
 All notable changes to the Background Video extension will be documented in this file.
 
+## [2.7.15] - 2025-11-24
+
+### Fixed
+- **Performance**: Fixed page refresh/excessive re-renders during rapid orientation changes
+  - Debounced `device:changed` handler with 300ms delay
+  - Prevents multiple rapid re-renders when device is rotated multiple times
+  - Allows orientation change to fully complete before processing
+  - Significantly improves performance and user experience
+
+### Changed
+- Added debouncing to `onDeviceChanged` handler
+- Using `_.debounce()` with 300ms delay for optimal orientation change handling
+- Added cleanup for debounced handler in `remove()` method
+
+### Technical Details
+- **Problem**: Multiple `device:changed` events during orientation changes caused excessive re-renders
+- **Solution**: Debounce handler to only process final orientation state after 300ms stabilization
+- **Benefits**:
+  - No more page refreshes during rapid orientation changes
+  - Improved performance and battery life
+  - Better user experience with smooth transitions
+  - Prevents render thrashing
+
+**Testing**: Verified on iPhone 14 Pro with rapid orientation changes
+
 ## [2.7.14] - 2025-11-24
 
 ### Fixed

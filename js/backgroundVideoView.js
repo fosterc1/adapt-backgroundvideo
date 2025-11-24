@@ -47,8 +47,10 @@ class BackgroundVideoView extends Backbone.View {
     };
     document.addEventListener('visibilitychange', this.visibilityHandler);
 
-    // Instead of re-rendering on device:changed, just update video sources
-    this.listenTo(Adapt, 'device:changed', this.onDeviceChanged);
+    // Debounce device:changed to prevent multiple rapid re-renders during orientation changes
+    // Use 300ms delay to allow orientation change to complete before processing
+    this._debouncedDeviceChanged = _.debounce(this.onDeviceChanged.bind(this), 300);
+    this.listenTo(Adapt, 'device:changed', this._debouncedDeviceChanged);
   }
 
   onDeviceChanged(screenSize) {
@@ -376,6 +378,11 @@ class BackgroundVideoView extends Backbone.View {
 
   remove() {
     console.log('BackgroundVideoView.remove - cleaning up');
+    
+    // Cancel any pending debounced calls
+    if (this._debouncedDeviceChanged) {
+      this._debouncedDeviceChanged.cancel();
+    }
     
     // Clean up video properly
     this.cleanupVideo();
