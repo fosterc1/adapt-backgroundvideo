@@ -1,6 +1,6 @@
 # adapt-backgroundVideo
 
-[![Version](https://img.shields.io/badge/version-2.7.6-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![Version](https://img.shields.io/badge/version-2.7.7-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
 [![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
 [![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
 [![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
@@ -38,23 +38,23 @@ The following attributes, set within  *course.json*, *contentObjects.json*, *art
 
 The extension requires you to specify videos for different screen sizes. At least one size must be configured:
 
->>**_xlarge** (object): Video files for Extra Large devices (1280px+)
+>>**_xlarge** (object): Video files for Extra Large screens
 >>>**_mp4** (string): MP4 video for Extra Large screens
 >>>**_webm** (string): WEBM video for Extra Large screens (optional)
 >>>**_graphic** (string): Poster image for Extra Large screens (optional)
 
->>**_large** (object): Video files for Large devices (960-1279px)
+>>**_large** (object): Video files for Large screens
 >>>**_mp4** (string): MP4 video for Large screens
 >>>**_webm** (string): WEBM video for Large screens (optional)
 >>>**_graphic** (string): Poster image for Large screens (optional)
 
->>**_medium** (object): Video files for Medium devices (720-959px)
->>>**_mp4** (string): MP4 video for Medium screens (tablets)
+>>**_medium** (object): Video files for Medium screens
+>>>**_mp4** (string): MP4 video for Medium screens
 >>>**_webm** (string): WEBM video for Medium screens (optional)
 >>>**_graphic** (string): Poster image for Medium screens (optional)
 
->>**_small** (object): Video files for Small devices (up to 719px)
->>>**_mp4** (string): MP4 video for Small screens (mobile)
+>>**_small** (object): Video files for Small screens
+>>>**_mp4** (string): MP4 video for Small screens
 >>>**_webm** (string): WEBM video for Small screens (optional)
 >>>**_graphic** (string): Poster image for Small screens (optional)
 
@@ -303,6 +303,12 @@ The background video extension works on all screen sizes including mobile device
 ---
 
 ## 📝 Changelog
+
+### v2.7.7 (2025-01-08) - Remove Pixel Values from Schema
+- ✅ **Schema Update**: Removed pixel values from AAT display (Extra Large, Large, Medium, Small)
+- ✅ **Dynamic Reference**: Help text now references Course Configuration breakpoints
+- ✅ **Cleaner UI**: AAT shows simple size names without hardcoded pixel values
+- ✅ **Accurate**: Reflects that breakpoints are configurable and dynamic
 
 ### v2.7.6 (2025-01-08) - Dynamic Breakpoint Documentation
 - ✅ **Clarified**: Extension IS dynamic and responds to config.json breakpoints
