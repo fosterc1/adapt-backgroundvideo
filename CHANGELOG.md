@@ -2,6 +2,29 @@
 
 All notable changes to the Background Video extension will be documented in this file.
 
+## [2.7.14] - 2025-11-24
+
+### Fixed
+- **Critical**: Fixed video not appearing when rotating from portrait (no video) to landscape (with video)
+  - Previous fix in v2.7.12 incorrectly returned early when `!this.video`, preventing video from rendering
+  - Now properly handles transition from no-video state to video state
+  - Reorganized logic to check for new video source availability before early return
+
+### Changed
+- Moved screen size model update before video existence check
+- Enhanced logic to render video when transitioning from no-video to video state
+- Improved console logging for better debugging of state transitions
+
+### Technical Details
+- **Problem**: Early return when `!this.video` prevented rendering video on orientation change
+- **Solution**: Check if new video source exists before deciding to skip or render
+- **Behavior Now**: 
+  - Portrait (no video) → Landscape (with video): ✅ Video appears (FIXED!)
+  - Landscape (with video) → Portrait (no video): ✅ Video disappears (still working)
+  - Multiple rotations: ✅ Proper show/hide behavior
+
+**Testing**: Verified on iPhone 14 Pro with portrait/landscape orientation changes
+
 ## [2.7.13] - 2025-11-24
 
 ### Changed
