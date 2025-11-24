@@ -57,8 +57,8 @@
                 "_xlarge": {
                   "type": "object",
                   "required": false,
-                  "title": "Extra Large Device (1280px+)",
-                  "help": "Video and poster for Extra Large screens (1280px and above)",
+                  "title": "Extra Large",
+                  "help": "Video and poster for Extra Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -95,8 +95,8 @@
                 "_large": {
                   "type": "object",
                   "required": false,
-                  "title": "Large Device (960-1279px)",
-                  "help": "Video and poster for Large screens (desktop standard)",
+                  "title": "Large",
+                  "help": "Video and poster for Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -133,8 +133,8 @@
                 "_medium": {
                   "type": "object",
                   "required": false,
-                  "title": "Medium Device (720-959px)",
-                  "help": "Video and poster for Medium screens (tablets)",
+                  "title": "Medium",
+                  "help": "Video and poster for Medium screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -171,8 +171,8 @@
                 "_small": {
                   "type": "object",
                   "required": false,
-                  "title": "Small Device (up to 719px)",
-                  "help": "Video and poster for Small screens (mobile)",
+                  "title": "Small",
+                  "help": "Video and poster for Small screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -344,8 +344,8 @@
                 "_xlarge": {
                   "type": "object",
                   "required": false,
-                  "title": "Extra Large Device (1280px+)",
-                  "help": "Video and poster for Extra Large screens (1280px and above)",
+                  "title": "Extra Large",
+                  "help": "Video and poster for Extra Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -382,8 +382,8 @@
                 "_large": {
                   "type": "object",
                   "required": false,
-                  "title": "Large Device (960-1279px)",
-                  "help": "Video and poster for Large screens (desktop standard)",
+                  "title": "Large",
+                  "help": "Video and poster for Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -420,8 +420,8 @@
                 "_medium": {
                   "type": "object",
                   "required": false,
-                  "title": "Medium Device (720-959px)",
-                  "help": "Video and poster for Medium screens (tablets)",
+                  "title": "Medium",
+                  "help": "Video and poster for Medium screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -458,8 +458,8 @@
                 "_small": {
                   "type": "object",
                   "required": false,
-                  "title": "Small Device (up to 719px)",
-                  "help": "Video and poster for Small screens (mobile)",
+                  "title": "Small",
+                  "help": "Video and poster for Small screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -631,8 +631,8 @@
                 "_xlarge": {
                   "type": "object",
                   "required": false,
-                  "title": "Extra Large Device (1280px+)",
-                  "help": "Video and poster for Extra Large screens (1280px and above)",
+                  "title": "Extra Large",
+                  "help": "Video and poster for Extra Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -669,8 +669,8 @@
                 "_large": {
                   "type": "object",
                   "required": false,
-                  "title": "Large Device (960-1279px)",
-                  "help": "Video and poster for Large screens (desktop standard)",
+                  "title": "Large",
+                  "help": "Video and poster for Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -707,8 +707,8 @@
                 "_medium": {
                   "type": "object",
                   "required": false,
-                  "title": "Medium Device (720-959px)",
-                  "help": "Video and poster for Medium screens (tablets)",
+                  "title": "Medium",
+                  "help": "Video and poster for Medium screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -745,8 +745,8 @@
                 "_small": {
                   "type": "object",
                   "required": false,
-                  "title": "Small Device (up to 719px)",
-                  "help": "Video and poster for Small screens (mobile)",
+                  "title": "Small",
+                  "help": "Video and poster for Small screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -918,8 +918,8 @@
                 "_xlarge": {
                   "type": "object",
                   "required": false,
-                  "title": "Extra Large Device (1280px+)",
-                  "help": "Video and poster for Extra Large screens (1280px and above)",
+                  "title": "Extra Large",
+                  "help": "Video and poster for Extra Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -956,8 +956,8 @@
                 "_large": {
                   "type": "object",
                   "required": false,
-                  "title": "Large Device (960-1279px)",
-                  "help": "Video and poster for Large screens (desktop standard)",
+                  "title": "Large",
+                  "help": "Video and poster for Large screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -994,8 +994,8 @@
                 "_medium": {
                   "type": "object",
                   "required": false,
-                  "title": "Medium Device (720-959px)",
-                  "help": "Video and poster for Medium screens (tablets)",
+                  "title": "Medium",
+                  "help": "Video and poster for Medium screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
@@ -1032,8 +1032,8 @@
                 "_small": {
                   "type": "object",
                   "required": false,
-                  "title": "Small Device (up to 719px)",
-                  "help": "Video and poster for Small screens (mobile)",
+                  "title": "Small",
+                  "help": "Video and poster for Small screens (based on Course Configuration breakpoints)",
                   "properties": {
                     "_mp4": {
                       "type": "string",
