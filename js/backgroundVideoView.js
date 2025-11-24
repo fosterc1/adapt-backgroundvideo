@@ -48,14 +48,28 @@ class BackgroundVideoView extends Backbone.View {
     document.addEventListener('visibilitychange', this.visibilityHandler);
 
     // Debounce device:changed to prevent multiple rapid re-renders during orientation changes
-    // Use 300ms delay to allow orientation change to complete before processing
-    this._debouncedDeviceChanged = _.debounce(this.onDeviceChanged.bind(this), 300);
+    // Use 500ms delay (increased from 300ms) to allow ALL orientation changes to complete
+    // This prevents cascading re-renders when multiple BackgroundVideo instances exist
+    this._debouncedDeviceChanged = _.debounce(this.onDeviceChanged.bind(this), 500);
     this.listenTo(Adapt, 'device:changed', this._debouncedDeviceChanged);
   }
 
   onDeviceChanged(screenSize) {
     console.log('BackgroundVideoView.onDeviceChanged - screenSize:', screenSize, 'viewport:', window.innerWidth + 'px');
     
+    // Use requestAnimationFrame to batch all video updates together
+    // This prevents visual "page refresh" when multiple videos update simultaneously
+    if (this._deviceChangeRAF) {
+      cancelAnimationFrame(this._deviceChangeRAF);
+    }
+    
+    this._deviceChangeRAF = requestAnimationFrame(() => {
+      this._deviceChangeRAF = null;
+      this._processDeviceChange(screenSize);
+    });
+  }
+  
+  _processDeviceChange(screenSize) {
     // Update model with new screen size
     this.model.set('_screenSize', screenSize);
     
