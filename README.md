@@ -1,34 +1,114 @@
-# adapt-backgroundVideo
+# Adapt Background Video
 
-[![Version](https://img.shields.io/badge/version-2.7.7-blue.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
-[![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](LICENSE)
-[![Adapt Framework](https://img.shields.io/badge/Adapt-5.14.0+-important.svg)](https://github.com/adaptlearning/adapt_framework)
-[![WCAG](https://img.shields.io/badge/WCAG-2.1%20AA%2FAAA-brightgreen.svg)](https://www.w3.org/WAI/WCAG21/quickref/)
+[![Adapt Framework Version](https://img.shields.io/badge/adapt%20framework-v5.14.0+-blue.svg)](https://github.com/adaptlearning/adapt_framework)
+[![License](https://img.shields.io/badge/license-GPL--3.0-green.svg)](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/LICENSE)
+[![Version](https://img.shields.io/badge/version-2.7.11-orange.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
+[![Accessibility](https://img.shields.io/badge/accessibility-WCAG%202.1%20AA-brightgreen.svg)](#accessibility-features)
+[![RTL Support](https://img.shields.io/badge/RTL-supported-success.svg)](#accessibility-features)
+[![Maintained](https://img.shields.io/badge/maintained-yes-success.svg)](https://github.com/fosterc1/adapt-backgroundvideo)
+[![Downloads](https://img.shields.io/github/downloads/fosterc1/adapt-backgroundvideo/total.svg)](https://github.com/fosterc1/adapt-backgroundvideo/releases)
+[![Stars](https://img.shields.io/github/stars/fosterc1/adapt-backgroundvideo.svg)](https://github.com/fosterc1/adapt-backgroundvideo/stargazers)
 
-**Background Video** is an *extension* for the Adapt Framework that adds responsive background videos to any element (menu, page, article, block) with device-specific optimization and comprehensive accessibility support.
+> A professional extension for the Adapt Learning Framework that adds responsive background videos to any element (menu, page, article, block) with device-specific optimization, comprehensive accessibility support, and smooth orientation handling.
 
-## ✨ Features
+---
 
-- 📱 **Device-Specific Videos** - Serve optimized videos per screen size (Extra Large, Large, Medium, Small)
-- ♿ **WCAG 2.1 AA/AAA Compliant** - Full accessibility with screen readers, keyboard navigation, and reduced motion
-- 🌍 **RTL Support** - Complete right-to-left language support using CSS logical properties
-- 🎨 **Fully Customizable** - 16 CSS custom properties for complete styling control
-- 📐 **Responsive Design** - Device-specific posters and videos for optimal performance
-- ⚡ **Smart Error Handling** - Graceful fallback to poster images with silent autoplay handling
-- 🎭 **Reduced Motion** - Respects system accessibility preferences
-- 🌐 **Cross-Browser** - Works on all modern browsers with HTML5 video support
-- 🎮 **User Controls** - Optional play/pause buttons with translatable labels
-- 📖 **Comprehensive Docs** - Extensive documentation and customization guide
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+  - [Adapt Authoring Tool](#adapt-authoring-tool)
+  - [Adapt Framework](#adapt-framework)
+- [Configuration](#configuration)
+  - [Basic Configuration](#basic-configuration)
+  - [Device-Specific Videos](#device-specific-videos-required)
+  - [Additional Configuration](#additional-configuration)
+  - [Playback Controls](#playback-controls)
+  - [Visibility Controls](#visibility-controls)
+  - [User Interaction](#user-interaction)
+- [Accessibility Features](#accessibility-features)
+- [Styling & Customization](#styling--customization)
+- [Browser Support](#browser-support)
+- [Performance Tips](#tips)
+- [Changelog](#-changelog)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Support](#-support)
+
+---
+
+## Features
+
+### 🎯 Core Functionality
+- **Responsive Background Videos**: Add videos to any Adapt element (menu, page, article, block)
+- **Device-Specific Optimization**: Serve optimized videos per screen size (XL, L, M, S)
+- **Smart Source Switching**: Automatically updates videos on orientation change
+- **Crash Prevention**: Fixed browser crashes during orientation changes (v2.7.11)
+- **Memory Management**: Proper cleanup prevents memory leaks
+- **Playback State Preservation**: Maintains video state across device changes
+
+### 📱 Device Support
+- **Desktop**: Full feature set with mouse and keyboard controls
+- **Tablet**: Touch-optimized with orientation handling
+- **Mobile**: Optimized for small screens with inline playback
+- **Cross-Platform**: Works on iOS, Android, Windows, and macOS
+- **Orientation Aware**: Smooth transitions between portrait and landscape
+
+### 🎨 Customization
+- **16 CSS Custom Properties**: Complete styling control
+- **Responsive Breakpoints**: Configure videos for 4 screen sizes
+- **Flexible Positioning**: Control container, video, and button placement
+- **User Controls**: Optional play/pause and mute buttons
+- **Loop Control**: Infinite, none, or specific loop counts
+- **Auto-play Options**: Configurable autoplay with accessibility support
+
+### ♿ Accessibility Features
+- **WCAG 2.1 AA/AAA Compliant**: Meets international accessibility standards
+- **Screen Reader Support**: Full ARIA labels and roles
+- **Keyboard Navigation**: Complete keyboard accessibility
+- **Reduced Motion Support**: Respects user preferences
+- **RTL Support**: Complete right-to-left language support
+- **Touch Targets**: 44px minimum for mobile accessibility
 
 **📖 See [CUSTOMIZATION.md](CUSTOMIZATION.md) for complete styling guide with 8+ examples**
 
-## Settings Overview
+---
 
-### Attributes
+## Installation
 
-The following attributes, set within  *course.json*, *contentObjects.json*, *articles.json* and *blocks.json*, configure the defaults for **Background Video**.  
+### Adapt Authoring Tool
 
->**_backgroundVideo** (object): The _backgroundVideo object that contains values for all configuration options.
+1. **Download**: Get the latest version from [Releases](https://github.com/fosterc1/adapt-backgroundvideo/releases)
+2. **Upload**: Navigate to Plugin Management in your AAT instance
+3. **Install**: Upload the plugin ZIP file
+4. **Enable**: Activate the plugin for your courses
+
+### Adapt Framework
+
+Using the Adapt CLI:
+
+```bash
+adapt install adapt-backgroundvideo
+```
+
+Or manually:
+
+```bash
+cd src/extensions
+git clone https://github.com/fosterc1/adapt-backgroundvideo.git
+# Remove the .git folder
+rm -rf adapt-backgroundvideo/.git
+```
+
+---
+
+## Configuration
+
+### Settings Overview
+
+The following attributes can be set within *course.json*, *contentObjects.json*, *articles.json*, and *blocks.json* to configure **Background Video**.
+
+**_backgroundVideo** (object): The main configuration object that contains all settings.
 
 ### Basic Configuration
 
@@ -267,42 +347,137 @@ The extension supports multilingual courses through translatable globals:
 
 These can be translated through the Adapt Authoring Tool or by updating the globals in your course JSON files.
 
-## Tips
+---
 
-- **Required Sizes**: You must configure at least one device size (_xlarge, _large, _medium, or _small)
-- **Video Format**: Provide both MP4 and WebM formats for maximum browser compatibility
-- **Responsive Strategy**: Configure all four sizes for best experience across all devices. Videos only play on their exact screen size match (no fallback)
-- **Video Optimization**: Create smaller file sizes for mobile devices - users on cellular connections will appreciate the reduced data usage
-- **Poster Images**: Include device-specific poster images for better loading experience on each device type
-- **File Size**: Optimize video files - large files impact page load performance. Consider using compression tools or lower bitrates for smaller screens
-- **Mobile First**: Start with `_small` configuration for mobile devices, then add larger sizes as needed
-- **Autoplay**: Consider user experience - muted autoplay is recommended
-- **Controls**: Enable `_showControls` for user control over playback
-- **Accessibility**: The extension automatically respects `prefers-reduced-motion`
-- **Mobile**: Videos play inline on mobile (no fullscreen) when `_playsinline` is enabled
-- **Testing**: Test on actual devices, especially mobile, to ensure smooth playback and verify responsive video switching
-- **Customization**: Use CSS variables for easy styling - see CUSTOMIZATION.md
-- **Loop Count**: Use `-1` for infinite loop, `0` for no loop, or positive number for specific count
-- **Positioning**: Default is `center top` - adjust via CSS if needed
+## Performance Tips
+
+### Video Optimization
+- **File Size**: Optimize video files - large files impact page load performance
+- **Compression**: Use tools like HandBrake or FFmpeg to reduce file size
+- **Bitrate**: Lower bitrates for smaller screens (e.g., 2-3 Mbps for mobile)
+- **Resolution**: Match video resolution to target screen size
+- **Mobile First**: Create smallest files for mobile devices (users on cellular)
+
+### Configuration Best Practices
+- **Required Sizes**: Configure at least one device size (_xlarge, _large, _medium, or _small)
+- **Video Formats**: Provide both MP4 and WebM for maximum browser compatibility
+- **Responsive Strategy**: Configure all four sizes for best experience
+- **Poster Images**: Include device-specific posters for better loading experience
+- **Autoplay**: Use muted autoplay for better user experience
+- **Loop Control**: Use `-1` for infinite loop, `0` for no loop
+
+### Device-Specific Recommendations
+
+| Screen Size | Max Resolution | Recommended Bitrate | File Size Target |
+|-------------|---------------|---------------------|------------------|
+| Small | 720p | 2-3 Mbps | < 5 MB |
+| Medium | 1080p | 3-5 Mbps | < 10 MB |
+| Large | 1080p-1440p | 5-8 Mbps | < 15 MB |
+| Extra Large | 1440p-4K | 8-12 Mbps | < 25 MB |
+
+### Testing Checklist
+- ✅ Test on actual mobile devices (not just browser resize)
+- ✅ Test orientation changes (portrait ↔ landscape)
+- ✅ Verify smooth video switching between breakpoints
+- ✅ Check console for errors
+- ✅ Monitor memory usage during orientation changes
+- ✅ Test autoplay behavior across browsers
+- ✅ Verify accessibility with screen readers
+- ✅ Check controls work on touch devices
+
+### Troubleshooting
+- **Browser Crashes**: Ensure you're using v2.7.11+ (orientation fix)
+- **Video Not Playing**: Check browser console for errors
+- **Wrong Video Size**: Verify breakpoint configuration in config.json
+- **Performance Issues**: Reduce video file sizes and bitrates
+- **Autoplay Blocked**: Use muted videos for autoplay compliance
+
+---
+
+## Tips & Best Practices
+
+### General Usage
+- 🎯 **Controls**: Enable `_showControls` for user control over playback
+- ♿ **Accessibility**: Extension automatically respects `prefers-reduced-motion`
+- 📱 **Mobile**: Videos play inline on mobile when `_playsinline` is enabled
+- 🎨 **Customization**: Use CSS variables for easy styling (see [CUSTOMIZATION.md](CUSTOMIZATION.md))
+- 📐 **Positioning**: Default is `center top` - adjust via CSS if needed
+
+### Development Tips
+- 🔧 **Version Control**: Use v2.7.11+ for stable orientation handling
+- 📊 **Monitoring**: Watch browser DevTools for memory usage
+- 🧪 **Testing**: Always test on real devices, not just simulators
+- 📝 **Documentation**: Keep video source URLs organized and documented
+
+---
 
 ## Browser Support
 
-- **Chrome** 60+
-- **Firefox** 55+
-- **Safari** 12+
-- **Edge** 79+
-- **iOS Safari** 12+
-- **Chrome Mobile** (Android)
+### Desktop Browsers
+| Browser | Minimum Version | Status |
+|---------|----------------|--------|
+| Chrome | 60+ | ✅ Fully Supported |
+| Firefox | 55+ | ✅ Fully Supported |
+| Safari | 12+ | ✅ Fully Supported |
+| Edge | 79+ | ✅ Fully Supported |
+| Opera | 47+ | ✅ Fully Supported |
 
-All modern browsers with HTML5 video support.
+### Mobile Browsers
+| Browser | Minimum Version | Status |
+|---------|----------------|--------|
+| iOS Safari | 12+ | ✅ Fully Supported |
+| Chrome Mobile | Latest | ✅ Fully Supported |
+| Samsung Internet | Latest | ✅ Fully Supported |
+| Firefox Mobile | Latest | ✅ Fully Supported |
 
-## Limitations
- 
-The background video extension works on all screen sizes including mobile devices. Videos only play on their exact configured screen size (no fallback cascade).
+**Requirements**: HTML5 video support and modern JavaScript (ES6+)
+
+---
+
+## Limitations & Considerations
+
+### Video Behavior
+- ✅ Works on all screen sizes including mobile devices
+- ⚠️ Videos only play on their exact configured screen size (no fallback)
+- ⚠️ If no video configured for current screen size, only poster shows
+- ⚠️ Browser autoplay policies may prevent automatic playback (expected behavior)
+
+### Performance Considerations
+- Large video files can impact page load time
+- Multiple videos on one page increase memory usage
+- Consider user bandwidth when selecting video quality
+- Mobile devices may have limited video codec support
+
+### Best Results
+- Configure videos for all 4 screen sizes
+- Optimize file sizes for each device type
+- Test on actual devices for accurate results
+- Monitor memory usage during orientation changes
+
+---
 
 ---
 
 ## 📝 Changelog
+
+### v2.7.11 (2025-11-24) - 🚨 CRITICAL: Orientation Change Crash Fix
+- 🔴 **CRITICAL FIX**: Fixed browser crashes during orientation changes on touch devices
+- ✅ **Memory Management**: Eliminated memory leaks from improper video cleanup
+- ✅ **Performance**: Intelligent source checking prevents unnecessary video reloads
+- ✅ **Playback State**: Preserves time, muted state, and playing status across changes
+- ✅ **Documentation**: Added comprehensive CHANGELOG.md and FIX_SUMMARY.md
+- 🔧 **Technical**: New `onDeviceChanged()`, `cleanupVideo()`, and `getVideoSourceForScreenSize()` methods
+
+**[View Full Fix Details](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/FIX_SUMMARY.md)**
+
+### v2.7.10 (Previous) - Show Controls Default
+- ✅ **Default Change**: Disabled Show Controls by default for cleaner user experience
+
+### v2.7.9 (Previous) - Confirm Disabled Behavior
+- ✅ **Verification**: Confirmed Show Controls disabled by default behavior
+
+### v2.7.8 (Previous) - Version Bump
+- ✅ **Maintenance**: Version number update
 
 ### v2.7.7 (2025-01-08) - Remove Pixel Values from Schema
 - ✅ **Schema Update**: Removed pixel values from AAT display (Extra Large, Large, Medium, Small)
@@ -375,13 +550,55 @@ This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICEN
 
 ---
 
-**Author / maintainer:** [fosterc1](https://github.com/fosterc1/)<br>
-**Accessibility support:** WCAG 2.1 AA/AAA Compliant - Full screen reader support, keyboard navigation, reduced motion, 44px touch targets<br>
-**RTL support:** Yes - CSS logical properties for Arabic, Hebrew, Persian, Urdu, etc.<br>
-**Cross-platform coverage:** Chrome 60+, Firefox 55+, Safari 12+, Edge 79+, iOS Safari 12+, Chrome Mobile (Android)<br>
-**Adapt Framework:** v5.14.0+<br>
-**Version:** 2.7.5
+## 📊 Project Information
+
+| Category | Details |
+|----------|---------|
+| **Author / Maintainer** | [fosterc1](https://github.com/fosterc1/) |
+| **Current Version** | 2.7.11 |
+| **Adapt Framework** | v5.14.0+ |
+| **License** | GPL-3.0 |
+| **Repository** | [GitHub](https://github.com/fosterc1/adapt-backgroundvideo) |
+| **Issues** | [Report Issues](https://github.com/fosterc1/adapt-backgroundvideo/issues) |
+| **Latest Release** | [v2.7.11 - Orientation Fix](https://github.com/fosterc1/adapt-backgroundvideo/releases/tag/v2.7.11) |
+
+### Accessibility Support
+✅ **WCAG 2.1 AA/AAA Compliant**  
+✅ Full screen reader support  
+✅ Keyboard navigation  
+✅ Reduced motion support  
+✅ 44px minimum touch targets  
+
+### RTL Support
+✅ **Complete right-to-left support**  
+✅ CSS logical properties  
+✅ Supports Arabic, Hebrew, Persian, Urdu, etc.  
+
+### Browser Compatibility
+✅ Chrome 60+  
+✅ Firefox 55+  
+✅ Safari 12+  
+✅ Edge 79+  
+✅ iOS Safari 12+  
+✅ Chrome Mobile (Android)  
 
 ---
 
-**Made with ❤️ for the Adapt Learning Community** 
+## 🌟 Credits
+
+**Made with ❤️ for the Adapt Learning Community**
+
+Special thanks to all contributors and the Adapt Learning community for their continued support and feedback.
+
+---
+
+## 📚 Related Documentation
+
+- [Fix Summary - Orientation Crash](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/FIX_SUMMARY.md)
+- [Customization Guide](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/CUSTOMIZATION.md)
+- [Changelog](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/CHANGELOG.md)
+- [Breakpoint Analysis](https://github.com/fosterc1/adapt-backgroundvideo/blob/main/BREAKPOINT-ANALYSIS.md)
+
+---
+
+**🚀 Ready to add stunning background videos to your Adapt courses!** 
