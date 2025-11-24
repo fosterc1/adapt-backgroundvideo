@@ -572,12 +572,12 @@ This project is licensed under the **GPL-3.0 License** - see the [LICENSE](LICEN
 | Category | Details |
 |----------|---------|
 | **Author / Maintainer** | [fosterc1](https://github.com/fosterc1/) |
-| **Current Version** | 2.7.11 |
+| **Current Version** | 2.7.13 |
 | **Adapt Framework** | v5.14.0+ |
 | **License** | GPL-3.0 |
 | **Repository** | [GitHub](https://github.com/fosterc1/adapt-backgroundvideo) |
 | **Issues** | [Report Issues](https://github.com/fosterc1/adapt-backgroundvideo/issues) |
-| **Latest Release** | [v2.7.11 - Orientation Fix](https://github.com/fosterc1/adapt-backgroundvideo/releases/tag/v2.7.11) |
+| **Latest Release** | [v2.7.13 - Video Hiding Fix](https://github.com/fosterc1/adapt-backgroundvideo/releases/tag/v2.7.13) |
 
 ### Accessibility Support
 ✅ **WCAG 2.1 AA/AAA Compliant**  
