@@ -1,10 +1,6 @@
 {
   "name": "adapt-backgroundvideo",
   "version": "2.7.17",
-  "framework": "^5.0.0",
-  "homepage": "https://github.com/fosterc1/adapt-backgroundvideo",
-  "displayName": "Background Video",
-  "component": "backgroundvideo",
   "description": "Background video component with device-specific responsive video sources and fallback images",
   "main": "js/backgroundVideoView.js",
   "keywords": [
@@ -15,5 +11,7 @@
     "responsive",
     "accessibility"
   ],
-  "license": "GPL-3.0"
+  "author": "fosterc1",
+  "license": "GPL-3.0",
+  "framework": ">=5.0.0"
 }

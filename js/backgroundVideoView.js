@@ -166,12 +166,14 @@ class BackgroundVideoView extends Backbone.View {
     this.video.pause();
     
     if (this.videoListenersAdded) {
-      this.video.removeEventListener('ended', this.onVideoEnded);
-      this.video.removeEventListener('play', this.updateButtonState);
-      this.video.removeEventListener('pause', this.updateButtonState);
-      this.video.removeEventListener('playing', this.updateButtonState);
-      this.video.removeEventListener('error', this.onVideoError);
-      this.video.removeEventListener('loadeddata', this.onVideoLoadedData);
+      // CRITICAL FIX: Use stored bound function references to properly remove listeners
+      // This prevents memory leaks and "n.apply is not a function" errors on mobile Safari
+      this.video.removeEventListener('ended', this._boundOnVideoEnded);
+      this.video.removeEventListener('play', this._boundUpdateButtonState);
+      this.video.removeEventListener('pause', this._boundUpdateButtonState);
+      this.video.removeEventListener('playing', this._boundUpdateButtonState);
+      this.video.removeEventListener('error', this._boundOnVideoError);
+      this.video.removeEventListener('loadeddata', this._boundOnVideoLoadedData);
       this.videoListenersAdded = false;
     }
     
@@ -186,15 +188,23 @@ class BackgroundVideoView extends Backbone.View {
   setupVideoListeners() {
     if (!this.video || this.videoListenersAdded) return;
     
+    // CRITICAL FIX: Store bound function references for proper cleanup
+    // Without this, removeEventListener fails because bind() creates new function instances
+    // This causes memory leaks and "n.apply is not a function" errors on mobile Safari
+    this._boundOnVideoEnded = this.onVideoEnded.bind(this);
+    this._boundUpdateButtonState = this.updateButtonState.bind(this);
+    this._boundOnVideoError = this.onVideoError.bind(this);
+    this._boundOnVideoLoadedData = this.onVideoLoadedData.bind(this);
+    
     // Video playback events
-    this.video.addEventListener('ended', this.onVideoEnded.bind(this));
-    this.video.addEventListener('play', this.updateButtonState.bind(this));
-    this.video.addEventListener('pause', this.updateButtonState.bind(this));
-    this.video.addEventListener('playing', this.updateButtonState.bind(this));
+    this.video.addEventListener('ended', this._boundOnVideoEnded);
+    this.video.addEventListener('play', this._boundUpdateButtonState);
+    this.video.addEventListener('pause', this._boundUpdateButtonState);
+    this.video.addEventListener('playing', this._boundUpdateButtonState);
     
     // Error handling
-    this.video.addEventListener('error', this.onVideoError.bind(this));
-    this.video.addEventListener('loadeddata', this.onVideoLoadedData.bind(this));
+    this.video.addEventListener('error', this._boundOnVideoError);
+    this.video.addEventListener('loadeddata', this._boundOnVideoLoadedData);
     
     this.videoListenersAdded = true;
   }
